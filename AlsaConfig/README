@@ -1,0 +1,28 @@
+#### IN CASE OF WRONG ALSA CONFIG DO THE FOLLOWING ####
+
+With Intel Corporation HD Audio Controller on laptop, you may need to add this line to modprobe or sound.conf:
+
+'options snd-hda-intel model=model'
+
+Where model is any one of the following:
+dell-m6
+dell-vostro
+generic
+laptop
+laptop-hpsense
+olpc-xo-1_5
+dell-inspiron-7559
+Note: It may be necessary to put this "options" line below (after) any "alias" lines about your card.
+You can see all the available models in the kernel documentation. For example https://www.kernel.org/doc/html/latest/sound/hd-audio/models.html, but check that it is the correct version of that document for your kernel version.
+
+A list of available models is also available here. To know your chip name type the following command (with * being corrected to match your files). Note that some chips could have been renamed and do not directly match the available ones in the file.
+
+$ grep Codec /proc/asound/card*/codec*
+Note that there is a high chance none of the input devices (all internal and external mics) will work if you choose to do this, so it is either your headphones or your mic. Please report to ALSA if you are affected by this bug.
+
+And also, if you have problems getting beeps to work (pcspkr):
+options snd-hda-intel model=$model enable=1 index=0
+
+
+If your hear high pitched or distorted sound, its always related to alsa because pulseaudio doesn't add distortion on its own
+Follow the above steps to configure alsa correctly
