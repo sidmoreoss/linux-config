@@ -6,3 +6,4 @@
 * config files for various applications
 * Lightdm configuration
 * Screen Tearing prevention
+* Qtile configuration files
