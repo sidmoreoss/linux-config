@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp realtek_alc3246.conf /etc/modprobe.d/
+
+printf "Successfully installed realtek modprobe\nReboot to take effect\n"

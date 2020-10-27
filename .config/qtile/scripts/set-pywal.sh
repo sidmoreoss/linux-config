@@ -79,11 +79,15 @@ set-wal(){
 	wal -i "$current_wallpaper"
 }
 
+setDunst(){
+	$HOME/.config/qtile/dunst/walColorsForDunst.sh
+}
+
 setwal() {
 	case "$1" in
-		-f) set-variety -f && find-wallpaper  &&  set-wal && $HOME/.config/qtile/dunst/walColorsForDunst.sh && qtile-cmd -o cmd -f restart && exit;;
-		-p) set-variety -p && find-wallpaper && set-wal && $HOME/.config/qtile/dunst/walColorsForDunst.sh && qtile-cmd -o cmd -f restart && exit;;
-		-n) set-variety -n && find-wallpaper && set-wal && $HOME/.config/qtile/dunst/walColorsForDunst.sh && qtile-cmd -o cmd -f restart  && exit;;
+		-f) set-variety -f && find-wallpaper  &&  set-wal && setDunst && qtile-cmd -o cmd -f restart && exit;;
+		-p) set-variety -p && find-wallpaper && set-wal && setDunst && qtile-cmd -o cmd -f restart && exit;;
+		-n) set-variety -n && find-wallpaper && set-wal && setDunst && qtile-cmd -o cmd -f restart  && exit;;
 		-u) find-wallpaper && set-wal ;;
 	esac
 }
