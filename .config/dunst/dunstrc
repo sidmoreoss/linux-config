@@ -1,8 +1,6 @@
-## Do not add curly braces '{}' anywhere in the file, they are used by pywal to apply colorschemes ###
-
 [global]
     frame_width = 1
-    frame_color = "{color4}"
+    frame_color = "#C4BBAD"
     
     font = Noto Sans 10
     
@@ -184,18 +182,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "{background}"
-    foreground = "{foreground}"
+    background = "#2d2b22"
+    foreground = "#d5d8db"
     timeout = 10
 
 [urgency_normal]
-    background = "{background}"
-    foreground = "{foreground}"
+    background = "#2d2b22"
+    foreground = "#d5d8db"
     timeout = 10
 
 [urgency_critical]
-    background = "{background}"
-    foreground = "{foreground}"
+    background = "#2d2b22"
+    foreground = "#d5d8db"
     timeout = 20
 
 
