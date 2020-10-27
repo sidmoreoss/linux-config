@@ -14,6 +14,13 @@
 - Try *vsync = True* in picom [config] file.
 - If the problem persists copy the file [20-intel.conf] to /etc/X11/xorg.conf.d/ folder.
 - For more information refer:  https://www.maketecheasier.com/get-rid-screen-tearing-linux/
+> Handle Screen Brightness
+
+Run the following commands to handle brightness keys using xfce4-power-manager.
+```sh
+$ sudo pacman --needed -S xfce4-power-manager xfce4-settings xfconf
+$ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/handle-brightness-keys --create -t bool -s true
+```
 
 ## Configuration
 To install dependencies and favorite **apps** and **fonts** run the script [Install Favorites].
@@ -36,7 +43,8 @@ i3 is a tiling window manager for linux written in C.
 ```s
 $ sudo pacman --needed -S i3 polybar
 ```
-- Copy **[i3]** to $HOME/.config/ and **restart i3** using the command 
+- Copy **[i3]** to $HOME/.config/ 
+- Now configure polybar using the steps given below and **restart i3** using the command
 ``` sh
 $ i3-msg restart.
 ```
@@ -52,94 +60,25 @@ $ sudo pacman --needed -S dunst
 - **Qtile** doesn't require polybar.
 - **i3**: Copy [polybar] to $HOME/.config/
 
-### Plugins
+### Configuring GTK themes
+Use *xfce4-appearance-settings* to apply **color schemes** and **fonts**.
+Visit *https://www.gnome-look.org/browse/cat/* for more themes.
 
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-
-### Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
+### Configuring Qt themes
+Install Kvantum and qt5ct to configure qt applications.
 ```sh
-$ node app
+sudo pacman --needed -S kvantum-qt5 qt5ct
 ```
+Visit *https://store.kde.org/browse/cat/123/order/latest/* for more themes.
 
-Second Tab:
+### Lightdm
+##### Installation:
 ```sh
-$ gulp watch
+$ sudo pacman --needed -S lightdm light-locker
+$ sudo systemctl enable lightdm.service
 ```
-
-(optional) Third:
-```sh
-$ karma test
-```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version} .
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
-
-
-### Todos
-
- - Write MORE Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+##### Configuration:
+Follow the steps in *https://wiki.archlinux.org/index.php/LightDM#Webkit2_greeter*
 
 
    [Intel-Nvidia Hybrid]: <https://archived.forum.manjaro.org/t/guide-install-and-configure-optimus-manager-for-hybrid-gpu-setups-intel-nvidia/92196>
