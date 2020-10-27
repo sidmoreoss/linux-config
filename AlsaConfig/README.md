@@ -1,3 +1,6 @@
+### For Realtek Alc 3246 just copy modprobe.conf to /etc/modprobe.d/ with pulseaudio installed
+Note: Pulseaudio is only required to mute channels automatically and mixing
+
 #### IN CASE OF WRONG ALSA CONFIG DO THE FOLLOWING ####
 
 With Intel Corporation HD Audio Controller on laptop, you may need to add this line to modprobe or sound.conf:
@@ -23,6 +26,21 @@ Note that there is a high chance none of the input devices (all internal and ext
 And also, if you have problems getting beeps to work (pcspkr):
 options snd-hda-intel model=$model enable=1 index=0
 
+### Important ###
+If you are using 'options snd-hda-intel model=dell-inspiron-7559'  you need pulseaudio to manage alsa mixer.
+
+If you can't get to achieve the preferred sound quality try this.
+options snd-hda-intel probe_mask=0x101 
+
 
 If your hear high pitched or distorted sound, its always related to alsa because pulseaudio doesn't add distortion on its own
 Follow the above steps to configure alsa correctly
+
+If you have problems configuring with above methods try visiting and gathering information from below sites.
+
+https://nint.us/181963
+https://www.kernel.org/doc/html/latest/sound/hd-audio/notes.html#codec-probing-problem
+https://bbs.archlinux.org/viewtopic.php?id=234965
+https://bbs.archlinux.org/viewtopic.php?id=222322
+https://wiki.archlinux.org/index.php/Kernel_module#Setting_module_options
+https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture/Troubleshooting

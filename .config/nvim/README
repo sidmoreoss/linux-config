@@ -1,0 +1,4 @@
+1) Copy the folder into $home/.config/
+2) Install plugins.
+3) Follow the instructions on the following page to install required plugins: https://github.com/junegunn/vim-plug 
+Done!

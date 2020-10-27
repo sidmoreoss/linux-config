@@ -1,0 +1,57 @@
+### Date Formats ###
+
+%Y - the year, in four digits. For example, 2011.
+%y - the year, last two digits only. For example, 11 not 2011.
+%m - the month, as a decimal number (1-12).
+%d - the day of the month (1-31).
+
+In the date specifiers, you can specify only one year specifier. Do not specify both %Y and %y
+
+
+### Time Formats ###
+
+%H - the hour, in 24-hour form (00-23).
+%I - the hour, in 12-hour form (00-12).
+%M - minutes after the hour (00-59).
+%S - seconds after the minute (00-59)
+%p - adds the AM (before noon) or PM (after noon) indicator.
+
+In the time specifiers, you can specify only one hour specifier. Do not specify both %I and %H.
+
+
+For more information on Date and Time formats refer:
+https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.2/client/r_opt_timeformat.html
+
+
+The time formats are:
+
+%a	Abbreviated week day
+%A	Full Weekday
+%b	Abbreviated month name
+%B	Full month name
+%c	Preferred date and time representation for current locale
+%C	The century number
+%d	The day of the month as decimal number
+%D	Equivalent to %m/%d/%y
+%e	Similar to %d, but leading zero is replaced by space
+%F	Equivalent to %Y-%m-%d (ISO format)
+%h	equivalent to %b
+%H	24-Hour
+%I	12-Hour
+%j	Day of the year in decimal
+%k	24-Hour format but zeros replaced by blank
+%m	Month in decimal
+%M	Minute in decimal
+%p	PM / AM
+%P	pm / am
+%r	%I:%M:%S %p
+%R	24-Hour notation %H:%M
+%s	Seconds since epoch
+%S	Second as decimal
+%T	%H:%M:%S
+%u	Day of the week as decimal range 1 - 7
+
+
+For more time formats refer: linux.die.net/man/3/strftime
+
+

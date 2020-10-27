@@ -1,0 +1,1 @@
+## Just copy the required config files to ~/.config

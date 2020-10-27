@@ -38,9 +38,10 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'dylanaraps/wal.vim'
 " call PlugInstall to install plugins
 call plug#end()
-colorscheme gruvbox
+colorscheme wal
 set background=dark
 set clipboard=unnamedplus
 set statusline+=%#warningmsg#
