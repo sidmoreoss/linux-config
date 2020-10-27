@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Update and install dependencies
+sudo pacman --noconfirm --needed -Syu variety picom xfce4-power-manager neovim ttf-font-awesome \
+   ttf-jetbrains-mono yay ttf-inconsolata xfce4-power-manager xfce4-settings \
+   xfconf thunar-volman thunar audacious brave firefox playerctl scrot rofi shotwell \
+   lightdm-webkit2-greeter dunst qbittorrent qt5ct light-locker blueman bluez bluez-utils \
+   polkit-gnome pulseaudio-bluetooth lightdm-webkit-theme-litarvan python-pywal
+
+# Install mononoki font and lightdm themes
+yay --noconfirm -S ttf-mononoki-git
+
+
+# Enable bluetooth
+sudo systemctl enable bluetooth.service
+
+
+# Copying qtile config to ~/.config/qtile/
+echo "Copying qtile config to ~/.config/qtile/"
+cp -rb * ~/.config/qtile
+

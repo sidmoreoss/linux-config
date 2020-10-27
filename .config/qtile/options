@@ -1,0 +1,93 @@
+### Shortcuts ###
+
+#    Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
+#    Key([], "XF86AudioNext", lazy.spawn("mpc next")),
+#    Key([], "XF86AudioPrev", lazy.spawn("mpc prev")),
+#    Key([], "XF86AudioStop", lazy.spawn("mpc stop")),
+# Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
+# Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
+# Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
+# Key(["mod1", "control"], "b", lazy.spawn(MY_FILE_MANAGER)),
+# Key(["mod1", "control"], "c", lazy.spawn('catfish')),
+# Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
+# Key(["mod1", "control"], "f", lazy.spawn(MY_BROWSER)),
+# Key(["mod1", "control"], "g", lazy.spawn(
+#     'chromium -no-default-browser-check')),
+# Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
+# Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
+# Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+# Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
+# Key(["mod1", "control"], "o", lazy.spawn(
+#     home + '/.config/qtile/scripts/picom-toggle.sh')),
+# Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
+# Key(["mod1", "control"], "r", lazy.spawn('rofi-theme-selector')),
+# Key(["mod1", "control"], "s", lazy.spawn('spotify')),
+# Key(["mod1", "control"], "t", lazy.spawn(MY_TERMINAL)),
+# Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
+# Key(["mod1", "control"], "v", lazy.spawn('vivaldi-stable')),
+# Key(["mod1", "control"], "w", lazy.spawn('arcolinux-welcome-app')),
+# Key(["mod1", "control"], "Return", lazy.spawn(MY_TERMINAL)),
+# ALT + ... KEYS
+    Key(["mod1"], "f", lazy.spawn('variety -f')),
+    Key(["mod1"], "h", lazy.spawn('urxvt -e htop')),
+    Key(["mod1"], "n", lazy.spawn('variety -n')),
+    Key(["mod1"], "p", lazy.spawn('variety -p')),
+    Key(["mod1"], "t", lazy.spawn('variety -t')),
+    Key(["mod1"], "Up", lazy.spawn('variety --pause')),
+    Key(["mod1"], "Down", lazy.spawn('variety --resume')),
+    Key(["mod1"], "Left", lazy.spawn('variety -p')),
+    Key(["mod1"], "Right", lazy.spawn('variety -n')),
+    Key(["mod1"], "F2", lazy.spawn('gmrun')),
+    Key(["mod1"], "F3", lazy.spawn('xfce4-appfinder')),
+
+
+
+### Autostart ###
+
+#Set your native resolution IF it does not exist in xrandr
+#More info in the script
+#run $HOME/.config/qtile/scripts/set-screen-resolution-in-virtualbox.sh
+#Find out your monitor name with xrandr or arandr (save and you get this line)
+#xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
+#xrandr --output DP2 --primary --mode 1920x1080 --rate 60.00 --output LVDS1 --off &
+#xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
+#xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+# xrandr --newmode "1920x1080_60.00"  172.80  1920 2040 2248 2576  1080 1081 1084 1118  -HSync +Vsync
+# xrandr --addmode Virtual1 "1920x1080_60.00"
+# xrandr --output Virtual1 --primary --mode "1920x1080_60.00" --pos 0x0 --rotate normal
+#change your keyboard if you need it
+#setxkbmap -layout be
+#autostart ArcoLinux Welcome App
+# run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop &
+#Some ways to set your wallpaper besides variety or nitrogen
+# feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+#start the conky to learn the shortcuts
+# (conky -c $HOME/.config/qtile/scripts/system-overview) &
+#IN BETA PHASE
+#start sxhkd to replace Qtile native key-bindings
+#run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
+#starting utility applications at boot time
+# run pamac-tray &
+# numlockx on &
+# /usr/lib/xfce4/notifyd/xfce4-notifyd &
+#starting user applications at boot time
+#run volumeicon &
+# run code
+# run firefox
+#run discord &
+#nitrogen --restore &
+#run caffeine -a &
+#run vivaldi-stable &
+#run firefox &
+#run thunar &
+#run dropbox &
+#run insync start &
+#run spotify &
+#run atom &
+#run telegram-desktop &
+
+
+# @hook.subscribe.startup
+# def start_always():
+#     # Set the cursor to something sane in X
+#     # subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
