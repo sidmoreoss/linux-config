@@ -3,6 +3,7 @@ bash install_favorites
 bash install_binaries
 bash install_realtek_alc3246
 bash fixScreenTearing
+bash handle_brightness_keys
 
 echo
 echo "Configuring Qtile"
@@ -18,7 +19,6 @@ cp -r nvim ~/.config/
 cp -r smplayer ~/.config/
 cp -r variety ~/.config/
 cp -r pulse ~/.config/
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/handle-brightness-keys --create -t bool -s true
 
 echo
 echo "Restarting qtile"
