@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp -u dunstrc $HOME/.config/wal/templates/
+cp -u ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
 
 # Symlink dunst config
 ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc

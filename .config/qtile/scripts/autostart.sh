@@ -12,7 +12,7 @@ run variety &
 
 ## Change wallpaper and get accent colors  ###
 # $HOME/.config/qtile/scripts/set-pywal.sh -u &
-wal -R
+wal -R 
 
 ### Launch Power Manager ###
 run xfce4-power-manager &
@@ -29,14 +29,14 @@ run light-locker &
 ### Launch bluetooth manager tray icon ###
 # blueman-tray &
 
-### Launch compositor ###
-picom --config $HOME/.config/qtile/scripts/picom.conf &
+### Launch compositor picom ###
+picom &
 
 ### Launch authentication agent ###
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ### Launch pulse audio ###
-start-pulseaudio-x11
+start-pulseaudio-x11 &
 
 
 # sleep 5

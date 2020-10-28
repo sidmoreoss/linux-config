@@ -1,5 +1,5 @@
 MY_BROWSER = 'brave'
-MY_TERMINAL = 'terminator'
+MY_TERMINAL = 'alacritty'
 MY_FILE_MANAGER = 'thunar'
 MY_CODE_EDITOR = 'code'
 MY_MUSIC_PLAYER = 'audacious'

@@ -1,0 +1,52 @@
+#!/bin/bash
+
+### Upgrading the system
+sudo pacman --noconfirm -Syyu
+
+### Install aur helper
+sudo pacman --needed --noconfirm -S yay
+
+## Installing compositor, notification daemon, rofi and alacritty
+sudo pacman --needed --noconfirm -S picom dunst rofi alacritty
+
+## Installing misc tools
+sudo pacman --needed --noconfirm -S flameshot fzf ripgrep 
+
+## Installing Browsers
+sudo pacman --needed --noconfirm -S brave firefox qbittorrent
+
+## Installing File managers
+sudo pacman --needed --noconfirm -S thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin gtkhash-thunar thunar-shares-plugin
+
+## Installing Media tools
+sudo pacman --needed --noconfirm -S audacious smplayer shotwell epdfview easytag playerctl
+
+## Installing Code Editors, Text Editors
+sudo pacman --needed --noconfirm -S neovim geany markdown_previewer
+
+## Installing Fonts
+sudo pacman --needed --noconfirm -S ttf-font-awesome ttf-jetbrains-mono ttf-inconsolata ttf-dejavu
+yay --noconfirm --needed -S ttf-mononoki-git
+
+## Installing Wallpaper Changers
+sudo pacman --noconfirm --needed -S variety python-pywal 
+
+## Installing System utilities
+# Display 
+sudo pacman --noconfirm --needed -S arandr
+# Authentication agent
+sudo pacman --noconfirm --needed -S polkit-gnome python-psutil
+# Xfce utilities
+sudo pacman --noconfirm --needed -S xfce4-power-manager xfce4-settings xfconf
+# Gtk Customization (already installed by xfce4-settings)
+# Qt Customization
+sudo pacman --noconfirm --needed -S qt5ct kvantum-qt5 xcb-util-cursor
+
+## Installing login manager
+sudo pacman --noconfirm --needed -S lightdm light-locker lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo systemctl enable lightdm.service -f
+echo
+echo
+echo "Reboot to take effect"
+
+

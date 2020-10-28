@@ -1,5 +1,0 @@
-#!/bin/bash
-shopt -s dotglob nullglob
-cp -rv * $HOME/
-rm $HOME/install_bashrc -v
-rm $HOME/README.md -v

@@ -1,0 +1,68 @@
+#!/usr/bin/bash
+shopt -s extglob
+
+declare -r myname='set-pywal'
+declare -r myver='1.1.1'
+
+# Verifies if 'python-pywal' is installed
+if ! type "wal" >> /dev/null 2>&1; then
+    echo -e \
+        "\nThis script requires 'python-pywal' to be installed\n" \
+        "\rPlease install it and rerun this script."
+fi
+
+
+# Verifies if 'variety' is installed
+if ! type "variety" >> /dev/null 2>&1; then
+    echo -e \
+        "\nThis script requires 'variety' to be installed\n" \
+        "\rPlease install it and rerun this script."
+fi
+
+if ! type "wal" >> /dev/null 2>&1 || ! type "variety" >> /dev/null 2>&1  ; then
+    exit
+fi
+
+find-wallpaper(){
+	current_wallpaper="$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)"
+}
+
+set-variety() {
+	case "$1" in
+		-f) variety -f ;;
+		-p) variety -p ;;
+		-n) variety -n ;;
+	esac
+}
+
+set-wal(){
+	wal -i "$current_wallpaper"
+}
+
+setDunst(){
+	walColorsForDunst
+}
+
+setwalqtile() {
+	case "$1" in
+		-f) set-variety -f && find-wallpaper  &&  set-wal && setDunst && qtile-cmd -o cmd -f restart && exit;;
+		-p) set-variety -p && find-wallpaper && set-wal && setDunst && qtile-cmd -o cmd -f restart && exit;;
+		-n) set-variety -n && find-wallpaper && set-wal && setDunst && qtile-cmd -o cmd -f restart  && exit;;
+		-u) find-wallpaper && set-wal ;;
+	esac
+}
+setwali3() {
+	case "$1" in
+		-f) set-variety -f && find-wallpaper  &&  set-wal && setDunst && i3-msg restart && exit;;
+		-p) set-variety -p && find-wallpaper && set-wal && setDunst && i3-msg restart && exit;;
+		-n) set-variety -n && find-wallpaper && set-wal && setDunst && i3-msg restart  && exit;;
+		-u) find-wallpaper && set-wal ;;
+	esac
+}
+
+# 1 : qtile
+# 2 : i3
+case "$1" in
+	1) setwalqtile $2; exit;;
+	2) setwali3 $2; exit;;
+esac

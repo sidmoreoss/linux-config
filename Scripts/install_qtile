@@ -1,0 +1,56 @@
+#!/bin/bash
+bash install_favorites
+bash install_binaries
+bash install_realtek_alc3246
+bash fixScreenTearing
+
+echo
+echo "Configuring Qtile"
+echo
+
+cd ../.config/
+cp -r qtile ~/.config/
+cp -r dunst ~/.config/
+cp -r picom ~/.config/
+cp -r rofi ~/.config/
+cp -r alacritty ~/.config/
+cp -r nvim ~/.config/
+cp -r smplayer ~/.config/
+cp -r variety ~/.config/
+cp -r pulse ~/.config/
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/handle-brightness-keys --create -t bool -s true
+
+echo
+echo "Restarting qtile"
+qtile-cmd -o cmd -f restart
+
+echo
+echo "Configuring Bash"
+echo
+cd ../Scripts/
+bash install_bash
+
+echo
+printf "Do you want to install pulseaudio? [y/n]"
+read choice
+
+if [ $choice == y ]
+then
+    echo "Installing pulse"
+    bash install_sound
+    bash install_pulse
+fi
+
+
+echo
+printf "Do you want to install bluetooth? [y/n]"
+read choice
+
+if [ $choice == y ]
+then
+    echo "Installing bluetooth"
+    bash install_bluetooth
+fi
+
+echo
+echo "Configuration Complete"

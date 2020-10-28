@@ -70,9 +70,8 @@ keys = [
 
     # MULTIMEDIA KEYS
     # SCREENSHOTS
-    Key([], "Print", lazy.spawn(
-        "scrot 'Linux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
-    Key([mod], "Print", lazy.spawn('xfce4-screenshooter')),
+    Key([], "Print", lazy.spawn("flameshot full -p " + home + "/Pictures")),
+    Key([mod], "Print", lazy.spawn("flameshot gui")),
     # INCREASE/DECREASE BRIGHTNESS
     # Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +10%")),
     # Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -10%")),
@@ -241,8 +240,8 @@ def assign_app_group(client):
     d["5"] = ["Vlc", "vlc", "Mpv", "mpv", "smplayer", "smplayer", "qbittorrent"]
 
     # Audio Players
-    d["6"] = ["Spotify", "Pragha", "Clementine", "Deadbeef", "Audacious",
-              "spotify", "pragha", "clementine", "deadbeef", "audacious"]
+    d["6"] = ["spotify", "Spotify",  "Pragha", "Clementine", "Deadbeef", "Audacious",
+                "pragha", "clementine", "deadbeef", "audacious"]
 
     wm_class = client.window.get_wm_class()[0]
 
@@ -460,7 +459,7 @@ widgets_list = [
         fontsize=ICON_SIZE,
         mouse_callbacks={
             'Button1': lambda qtile: qtile.cmd_spawn(LOGOUT_MANAGER),
-            'Button3': lambda qtile: qtile.cmd_spawn(home + "/.config/qtile/scripts/set-pywal.sh -n")
+            'Button3': lambda qtile: qtile.cmd_spawn("set-pywal 1 -n")
             }
     ),
 ]

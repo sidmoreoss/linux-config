@@ -1,6 +1,6 @@
 [global]
     frame_width = 1
-    frame_color = "#C4BBAD"
+    frame_color = "#A99D95"
     
     font = Noto Sans 10
     
@@ -182,18 +182,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#2d2b22"
-    foreground = "#d5d8db"
+    background = "#0d0d0e"
+    foreground = "#dfdedf"
     timeout = 10
 
 [urgency_normal]
-    background = "#2d2b22"
-    foreground = "#d5d8db"
+    background = "#0d0d0e"
+    foreground = "#dfdedf"
     timeout = 10
 
 [urgency_critical]
-    background = "#2d2b22"
-    foreground = "#d5d8db"
+    background = "#0d0d0e"
+    foreground = "#dfdedf"
     timeout = 20
 
 
