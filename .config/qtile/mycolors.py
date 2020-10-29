@@ -1,5 +1,8 @@
 import json
 import os
+home = os.path.expanduser('~')
+with open(home + '/.cache/wal/colors.json') as f:
+    wal = json.load(f)
 
 def colorsList():
     return [["#2F343F", "#2F343F"],  # color 0
@@ -162,18 +165,15 @@ def colorsList():
 
 
 ### Python-pywal ### sudo pacman -S python-pywal
-home = os.path.expanduser('~')
-with open(home + '/.cache/wal/colors.json') as f:
-    data = json.load(f)
+## Background change ##
+textColor = wal["special"]["background"]
+clockColor = wal["special"]["foreground"]
+barBackground =wal["special"]["background"]
 
-textColor = data["special"]["background"]
-clockColor = data["special"]["foreground"]
-barBackground =data["special"]["background"]
-
-leftColor1 = data["colors"]["color3"]
-leftColor2 = data["colors"]["color4"]
-rightColor1 = data["colors"]["color5"]
-rightColor2 = data["colors"]["color6"]
+leftColor1 = wal["colors"]["color3"]
+leftColor2 = wal["colors"]["color4"]
+rightColor1 = wal["colors"]["color5"]
+rightColor2 = wal["colors"]["color6"]
 def colorsDict():
     return {
             ### Bar Background ###
@@ -232,7 +232,80 @@ def colorsDict():
             "exitBackground" : rightColor2,
 
             # COLORS FOR THE WINDOWS
-            "border_focus" : data["colors"]["color2"],
-            "border_normal" : data["colors"]["color1"],
+            "border_focus" : wal["colors"]["color2"],
+            "border_normal" : wal["colors"]["color1"],
 
             }
+
+
+# ## Text change ##
+# textColor = wal["special"]["background"]
+# clockColor = wal["special"]["foreground"]
+# barBackground =wal["special"]["background"]
+
+# leftColor1 = wal["colors"]["color3"]
+# leftColor2 = wal["colors"]["color4"]
+# rightColor1 = wal["colors"]["color5"]
+# rightColor2 = wal["colors"]["color6"]
+# def colorsDict():
+#     return {
+#             ### Bar Background ###
+#             "barBackground" : barBackground,
+
+#             ### Sep colors ###
+#             "sepForeground" : "#1a000a",
+#             "sepBackground" : barBackground,
+
+#             ### Group colors ###
+#             "groupBackground" : barBackground,
+#             "groupForeground" : leftColor1,
+#             "currentGroup" : "#cc0000",
+#             "groupActive" : "#aaa0ff",
+
+#             ### Layout colors ###
+#             "layoutBackground" : barBackground,
+#             "layoutForeground" : leftColor2,
+
+#             ### Window Name colors ###
+#             "windowBackground" : barBackground,
+#             "windowForeground" : clockColor,
+
+#             ### Clock colors ###
+#             "clockForeground" : clockColor,
+#             "clockBackground" : barBackground,
+            
+#             ### CPU colors ###
+#             "cpuBackground" : barBackground,
+#             "cpuForeground" : rightColor2,
+
+#             ### Memory colors ###
+#             "memoryBackground" : barBackground,
+#             "memoryForeground" : rightColor1,
+
+#             ### HDD colors ###
+#             "hddBackground" : barBackground,
+#             "hddForeground" : rightColor2,
+
+#             ### Volume colors ###
+#             "volBackground" : barBackground,
+#             "volForeground" : rightColor1,
+
+#             ### Updates colors ###
+#             "updateBackground" : barBackground,
+#             "updateForeground" : rightColor2,
+#             "updatesAvailable" : "#cc0000",
+            
+
+#             ### Tray colors ###
+#             "trayForeground" : rightColor1,
+#             "trayBackground" : barBackground,
+
+#             ### Exit Menu ###
+#             "exitForeground" : rightColor2,
+#             "exitBackground" : barBackground,
+
+#             # COLORS FOR THE WINDOWS
+#             "border_focus" : wal["colors"]["color2"],
+#             "border_normal" : wal["colors"]["color1"],
+
+#             }
