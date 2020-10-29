@@ -346,14 +346,14 @@ widgets_list = [
         background=color['cpuBackground'],
         text="",
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e htop")},
+            MY_TERMINAL + " -e htop")},
     ),
     widget.CPU(
         foreground=color['cpuForeground'],
         background=color['cpuBackground'],
         format='{load_percent}%',
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e htop")},
+            MY_TERMINAL + " -e htop")},
     ),
     widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color['cpuBackground']),
     
@@ -366,7 +366,7 @@ widgets_list = [
         background=color["memoryBackground"],
         text="",
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e htop")},
+            MY_TERMINAL + " -e htop")},
     ),
     widget.Memory(
         foreground=color["memoryForeground"],
@@ -374,7 +374,7 @@ widgets_list = [
         format='{MemUsed} / {MemTotal}',
         update_interval=1,
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e htop")},
+            MY_TERMINAL + " -e htop")},
     ),
     widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["memoryBackground"]),
 
@@ -425,7 +425,7 @@ widgets_list = [
         background=color["updateBackground"],
         text="",
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e sudo pacman -Syu")}
+            MY_TERMINAL + " -e sudo pacman -Syu")}
     ),
     widget.CheckUpdates(
         update_interval = 1800,
@@ -437,7 +437,7 @@ widgets_list = [
         distro='Arch',
         display_format='{updates}',
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " --e sudo pacman -Syu")}
+            MY_TERMINAL + " -e sudo pacman -Syu")}
     ),
     widget.Sep(linewidth=0,padding = SEP_PADDING,background=color["updateBackground"]),
 
