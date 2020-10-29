@@ -35,7 +35,7 @@ sudo pacman --noconfirm --needed -S variety python-pywal
 
 ## Installing System utilities
 # Display 
-sudo pacman --noconfirm --needed -S arandr
+sudo pacman --noconfirm --needed -S arandr file-roller
 # Authentication agent
 sudo pacman --noconfirm --needed -S polkit-gnome python-psutil
 # Xfce utilities

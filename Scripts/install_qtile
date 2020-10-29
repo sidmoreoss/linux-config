@@ -23,7 +23,6 @@ cp -r rofi ~/.config/
 cp -r alacritty ~/.config/
 cp -r nvim ~/.config/
 cp -r smplayer ~/.config/
-cp -r variety ~/.config/
 cp -r pulse ~/.config/
 
 ## Make qtile scripts executable
