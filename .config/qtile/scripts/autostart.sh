@@ -37,7 +37,3 @@ picom &
 
 ### Launch pulse audio ###
 start-pulseaudio-x11 &
-
-
-# sleep 5
-#qtile-cmd -o cmd -f restart
