@@ -45,7 +45,7 @@ sudo pacman --noconfirm --needed -S xfce4-power-manager xfce4-settings xfconf
 sudo pacman --noconfirm --needed -S qt5ct kvantum-qt5 xcb-util-cursor
 
 ## Installing login manager
-sudo pacman --noconfirm --needed -S lightdm light-locker lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo pacman --noconfirm --needed -S lightdm light-locker
 sudo systemctl enable lightdm.service -f
 echo
 echo
