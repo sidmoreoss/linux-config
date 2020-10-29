@@ -1,5 +1,3 @@
 #!/bin/bash
-
-cp -rvb ../Drivers/Alsa/realtek_alc3246.conf /etc/modprobe.d/
-
-printf "Successfully installed realtek modprobe\nReboot to take effect\n"
+sudo mkdir -v /etc/modprobe.d/
+sudo cp -rvb ../Drivers/Alsa/realtek_alc3246.conf /etc/modprobe.d/ && printf "Successfully installed realtek modprobe\nReboot to take effect\n"
