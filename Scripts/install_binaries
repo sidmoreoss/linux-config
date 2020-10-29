@@ -1,5 +1,6 @@
 #!/bin/bash
-cp -ruvb ../bin/. ~/.local/bin/
+mkdir -pv ~/.bin/
+cp -ruvb ../bin/. ~/bin/
 cd ~/.local/bin/
 chmod +x *
 echo
