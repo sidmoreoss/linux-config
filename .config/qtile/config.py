@@ -464,8 +464,8 @@ widgets_list = [
     ),
 ]
 
-screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1)),
-            Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))]
+screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))]#,
+            # Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))]
 #####################################################################################################################################################################
 ############################# Bar End ###############################################################################################################################
 #####################################################################################################################################################################
@@ -473,9 +473,10 @@ screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))
 # MOUSE CONFIGURATION
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
+        start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size())
+        start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
@@ -523,6 +524,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'pavucontrol'},
     {'wname': 'branchdialog'},
     {'wname': 'Open File'},
+    {'wname': 'Custom Actions'},
+    {'wname': 'Create Action'},
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
     {'wmclass': 'shotwell'},
