@@ -5,6 +5,7 @@ bash install_realtek_alc3246
 bash fixScreenTearing
 bash handle_brightness_keys
 
+sudo pacman --needed --noconfirm -S qtile
 echo
 echo "Configuring Qtile"
 echo
