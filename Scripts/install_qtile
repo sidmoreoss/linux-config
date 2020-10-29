@@ -26,6 +26,9 @@ cp -r smplayer ~/.config/
 cp -r variety ~/.config/
 cp -r pulse ~/.config/
 
+## Make qtile scripts executable
+chmod +x ~/.config/qtile/scripts/*
+
 echo
 echo "Restarting qtile"
 qtile-cmd -o cmd -f restart
