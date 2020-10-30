@@ -27,7 +27,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -439,11 +439,12 @@ exec --no-startup-id conky -c ~/.conky/conky_maia
 ######################################
 # Open applications on specific workspaces
 assign [class="Brave"] $ws1
-assign [class="Pale moon"] $ws1
-assign [class="Pcmanfm"] $ws2
+assign [class="Firefox"] $ws1
+assign [class="Code"] $ws2
 assign [class="Terminator"] $ws3
-assign [class="Audacious"] $ws4
-assign [class="Skype"] $ws5
+assign [class="Thunar"] $ws4
+assign [class="smplayer"] $ws5
+assign [class="Audacious"] $ws6
 
 
 #####################################################
@@ -453,11 +454,6 @@ bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 
-
-#######################
-### Gap for Polybar ###
-#######################
-#gaps top 20
 
 
 

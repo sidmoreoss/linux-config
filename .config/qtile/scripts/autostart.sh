@@ -30,7 +30,7 @@ run light-locker &
 # blueman-tray &
 
 ### Launch compositor picom ###
-picom &
+picom --experimental-backends &
 
 ### Launch authentication agent ###
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

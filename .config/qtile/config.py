@@ -464,8 +464,9 @@ widgets_list = [
     ),
 ]
 
-screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))]#,
-            # Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))]
+screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1)),
+            # Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))  ## For two monitors
+                ]
 #####################################################################################################################################################################
 ############################# Bar End ###############################################################################################################################
 #####################################################################################################################################################################
@@ -533,6 +534,6 @@ floating_layout = layout.Floating(float_rules=[
 ],  fullscreen_border_width=0, border_width=0)
 auto_fullscreen = True
 
-focus_on_window_activation = 'smart'  # "focus" # or smart
+focus_on_window_activation = 'focus'  # "focus" # or smart
 
 wmname = "LG3D"
