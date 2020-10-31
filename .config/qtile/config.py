@@ -425,7 +425,7 @@ widgets_list = [
         background=color["updateBackground"],
         text="",
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " -e sudo pacman -Syu")}
+            MY_TERMINAL + " -e yay -Syu")}
     ),
     widget.CheckUpdates(
         update_interval = 1800,
@@ -437,7 +437,7 @@ widgets_list = [
         distro='Arch',
         display_format='{updates}',
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " -e sudo pacman -Syu")}
+            MY_TERMINAL + " -e yay -Syu")}
     ),
     widget.Sep(linewidth=0,padding = SEP_PADDING,background=color["updateBackground"]),
 
