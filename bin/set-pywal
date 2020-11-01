@@ -35,35 +35,42 @@ set-variety() {
 	esac
 }
 
-set-wal(){
-	wal -i "$current_wallpaper"
-}
 
 otherApps(){
 	walColorsForDunst
 	walAlacritty
 }
 
-setwalqtile() {
-	case "$1" in
-		-f) set-variety -f && find-wallpaper  &&  set-wal && otherApps && qtile-cmd -o cmd -f restart && exit;;
-		-p) set-variety -p && find-wallpaper && set-wal && otherApps && qtile-cmd -o cmd -f restart && exit;;
-		-n) set-variety -n && find-wallpaper && set-wal && otherApps && qtile-cmd -o cmd -f restart  && exit;;
-		-u) find-wallpaper && set-wal ;;
-	esac
+qtile-restart(){
+	qtile-cmd -o cmd -f restart
 }
-setwali3() {
+
+i3-restart(){
+	i3-msg restart
+}
+
+restart-wm(){
 	case "$1" in
-		-f) set-variety -f && find-wallpaper  &&  set-wal && otherApps && i3-msg restart && exit;;
-		-p) set-variety -p && find-wallpaper && set-wal && otherApps && i3-msg restart && exit;;
-		-n) set-variety -n && find-wallpaper && set-wal && otherApps && i3-msg restart  && exit;;
-		-u) find-wallpaper && set-wal ;;
+		qtile) qtile-restart; exit;;
+		i3) i3-restart; exit;;
 	esac
 }
 
-# 1 : qtile
-# 2 : i3
-case "$1" in
-	1) setwalqtile $2; exit;;
-	2) setwali3 $2; exit;;
-esac
+set-wal(){
+	find-wallpaper
+	wal -i "$current_wallpaper"
+	otherApps
+	restart-wm $1
+}
+
+setwal() {
+	case "$2" in
+		-f) set-variety -f && set-wal $1 && exit;;
+		-p) set-variety -p && set-wal $1 && exit;;
+		-n) set-variety -n && set-wal $1 && exit;;
+		-u) set-wal $1 && exit;;
+	esac
+}
+
+# $1 is the wm name and $2 is the action (next, preivous, update)
+setwal $1 $2

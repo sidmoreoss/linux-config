@@ -221,15 +221,18 @@ def colorsDict():
             "updateBackground" : rightColor2,
             "updateForeground" :textColor,
             "updatesAvailable" : "#cc0000",
-            
 
+            ### Wallpaper colors ###
+            "walBackground" : rightColor1,
+            "walForeground" :textColor,
+            
             ### Tray colors ###
             "trayForeground" : textColor,
-            "trayBackground" : rightColor1,
+            "trayBackground" : rightColor2,
 
             ### Exit Menu ###
             "exitForeground" : textColor,
-            "exitBackground" : rightColor2,
+            "exitBackground" : rightColor1,
 
             # COLORS FOR THE WINDOWS
             "border_focus" : wal["colors"]["color2"],

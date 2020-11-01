@@ -425,7 +425,9 @@ widgets_list = [
         background=color["updateBackground"],
         text="",
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " -e yay -Syu")}
+            MY_TERMINAL + " -e yay -Syu"),
+            'Button3': lambda qtile: qtile.cmd_spawn("set-pywal qtile -u")
+            }
     ),
     widget.CheckUpdates(
         update_interval = 1800,
@@ -437,9 +439,27 @@ widgets_list = [
         distro='Arch',
         display_format='{updates}',
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
-            MY_TERMINAL + " -e yay -Syu")}
+            MY_TERMINAL + " -e yay -Syu"),
+            'Button3': lambda qtile: qtile.cmd_spawn("set-pywal qtile -u")
+            }
     ),
     widget.Sep(linewidth=0,padding = SEP_PADDING,background=color["updateBackground"]),
+
+    ### Wallpaper ###
+    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["walBackground"]),
+    widget.TextBox(
+        font=ICON_FONT,
+        fontsize=ICON_SIZE,
+        foreground=color["walForeground"],
+        background=color["walBackground"],
+        text="",
+        mouse_callbacks={
+            'Button1': lambda qtile: qtile.cmd_spawn("set-pywal qtile -n"),
+            'Button3': lambda qtile: qtile.cmd_spawn("set-pywal qtile -p"),
+            'Button2': lambda qtile: qtile.cmd_spawn("set-pywal qtile -u"),
+            }
+    ),
+    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["walBackground"]),
 
     ### Sys Tray ###
     widget.Systray(
@@ -457,10 +477,7 @@ widgets_list = [
         background=color["exitBackground"],
         padding=SEP_PADDING,
         fontsize=ICON_SIZE,
-        mouse_callbacks={
-            'Button1': lambda qtile: qtile.cmd_spawn(LOGOUT_MANAGER),
-            'Button3': lambda qtile: qtile.cmd_spawn("set-pywal 1 -n")
-            }
+        mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(LOGOUT_MANAGER)}
     ),
 ]
 
