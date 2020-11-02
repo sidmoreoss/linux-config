@@ -64,6 +64,7 @@ python-pywal
 
 ## System utilities
 arandr 
+lxappearance
 file-roller
 polkit-gnome 
 python-psutil
@@ -73,17 +74,9 @@ xfconf
 qt5ct 
 kvantum-qt5 
 xcb-util-cursor
-
-## Login manager
-lightdm 
-light-locker
-
 )
 
 yaylist=(
-# Picom Compositor
-picom-tryone-git
-
 # Fonts
 ttf-mononoki-git
 )
@@ -101,8 +94,8 @@ for name in "${yaylist[@]}" ; do
 	yay_install $name
 done
 
+yay -S picom-tryone-git
 
-sudo systemctl enable lightdm.service -f
 echo
 echo
 echo "Reboot to take effect"
