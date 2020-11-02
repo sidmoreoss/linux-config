@@ -60,5 +60,7 @@ then
     bash install_bluetooth
 fi
 
+set-pywal qtile -n
+
 echo
 echo "Configuration Complete"
