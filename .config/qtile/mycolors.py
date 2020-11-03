@@ -170,10 +170,10 @@ textColor = wal["special"]["background"]
 clockColor = wal["special"]["foreground"]
 barBackground =wal["special"]["background"]
 
-leftColor1 = wal["colors"]["color3"]
-leftColor2 = wal["colors"]["color4"]
-rightColor1 = wal["colors"]["color5"]
-rightColor2 = wal["colors"]["color6"]
+leftColor1 = wal["colors"]["color1"]
+leftColor2 = wal["colors"]["color2"]
+rightColor1 = wal["colors"]["color3"]
+rightColor2 = wal["colors"]["color4"]
 def colorsDict():
     return {
             ### Bar Background ###
@@ -186,8 +186,8 @@ def colorsDict():
             ### Group colors ###
             "groupBackground" : leftColor1,
             "groupForeground" : textColor,
-            "currentGroup" : "#cc0000",
-            "groupActive" : "#aaa0ff",
+            "currentGroup" : leftColor1,
+            "groupActive" : leftColor2,
 
             ### Layout colors ###
             "layoutBackground" : leftColor2,

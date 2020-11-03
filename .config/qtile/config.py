@@ -310,13 +310,28 @@ widgets_list = [
         foreground=color['groupForeground'],
         background=color['groupBackground']
     ),
+    widget.TextBox(
+        font = ICON_FONT,
+        fontsize = 40,
+        text = "",
+        padding = 0,
+        foreground=color['groupBackground'],
+        background = color['layoutBackground']
+    ),
 
     ### Layouts ###
     widget.CurrentLayout(
         foreground=color['layoutForeground'],
         background=color['layoutBackground'],
-        padding = 10
     ),
+    widget.TextBox(
+        font = ICON_FONT,
+        fontsize = 40,
+        text = "",
+        padding = 0,
+        foreground=color['layoutBackground'],
+    ),
+
     
     ### Window Name ###
     widget.WindowName(
@@ -338,7 +353,7 @@ widgets_list = [
     ),
 
     ### CPU ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color['cpuBackground']),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['cpuBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -355,10 +370,10 @@ widgets_list = [
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
             MY_TERMINAL + " -e htop")},
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color['cpuBackground']),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color['cpuBackground']),
     
     ### Memory ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["memoryBackground"]),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['memoryBackground'],background=color['cpuBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -376,10 +391,10 @@ widgets_list = [
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(
             MY_TERMINAL + " -e htop")},
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["memoryBackground"]),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["memoryBackground"]),
 
     ### HDD ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["hddBackground"]),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['hddBackground'],background=color['memoryBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -397,10 +412,10 @@ widgets_list = [
         mouse_callbacks={
             'Button1': lambda qtile: qtile.cmd_spawn(MY_FILE_MANAGER)}
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["hddBackground"]),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["hddBackground"]),
 
     ### Volume ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["volBackground"]),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['volBackground'],background=color['hddBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -414,10 +429,10 @@ widgets_list = [
         foreground=color["volForeground"],
         background=color["volBackground"],
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["volBackground"]),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["volBackground"]),
     
     ### Updates ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["updateBackground"]),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['updateBackground'],background=color['volBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -443,10 +458,10 @@ widgets_list = [
             'Button3': lambda qtile: qtile.cmd_spawn("set-pywal qtile -u")
             }
     ),
-    widget.Sep(linewidth=0,padding = SEP_PADDING,background=color["updateBackground"]),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["updateBackground"]),
 
     ### Wallpaper ###
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["walBackground"]),
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['walBackground'],background=color['updateBackground']),
     widget.TextBox(
         font=ICON_FONT,
         fontsize=ICON_SIZE,
@@ -459,23 +474,25 @@ widgets_list = [
             'Button2': lambda qtile: qtile.cmd_spawn("set-pywal qtile -u"),
             }
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color["walBackground"]),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["walBackground"]),
 
     ### Sys Tray ###
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['trayBackground'],background=color['walBackground']),
     widget.Systray(
         background=color['trayBackground'],
         icon_size=ICON_SIZE,
-        padding = 10,
+        padding = SEP_PADDING,
     ),
-    widget.Sep(linewidth = 0,padding = SEP_PADDING,background=color['trayBackground']),
+    widget.Sep(linewidth=0,padding=SEP_PADDING,background=color['trayBackground']),
 
     ### Quick Exit ###
+    widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['exitBackground'],background=color['trayBackground']),
     widget.TextBox(
         font=ICON_FONT,
         text="",
         foreground=color["exitForeground"],
         background=color["exitBackground"],
-        padding=SEP_PADDING,
+        padding=10,
         fontsize=ICON_SIZE,
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(LOGOUT_MANAGER)}
     ),

@@ -11,7 +11,7 @@ MY_TEXT_FONT = "JetBrains Mono:style=Extra Bold"
 MY_FONT_SIZE = 12
 ICON_FONT = "Font Awesome 5 Free"
 ICON_SIZE = 12
-PANEL_SIZE = 24
+PANEL_SIZE = 20
 
 
-SEP_PADDING = 15
+SEP_PADDING = 5
