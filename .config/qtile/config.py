@@ -19,13 +19,11 @@ mod2 = "control"
 home = os.path.expanduser('~')
 LOGOUT_MANAGER = home + '/.config/qtile/scripts/power.sh'
 
-
 @lazy.function
 def window_to_prev_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i - 1].name)
-
 
 @lazy.function
 def window_to_next_group(qtile):
@@ -33,255 +31,12 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
-
-#####################################################################################################################################################################
-############################# Key Bindings Start ####################################################################################################################
-#####################################################################################################################################################################
-keys = [
-
-    # FUNCTION KEYS
-    Key([], "F12", lazy.spawn('xfce4-terminal --drop-down')),
-    
-    # SUPER + FUNCTION KEYS  (Launch Applications)
-    Key([mod], "e", lazy.spawn(MY_FILE_MANAGER)),
-    Key([mod], "c", lazy.spawn(MY_CODE_EDITOR)),
-    Key([mod], "b", lazy.spawn(MY_BROWSER)),
-    Key([mod], "m", lazy.spawn(MY_MUSIC_PLAYER)),
-    Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn(MY_TERMINAL)),
-    Key([mod], "s", lazy.spawn('rofi -show run')),
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
-
-    # SUPER + CONTROL KEYS
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod, "control"], "x", lazy.spawn(LOGOUT_MANAGER)),
-    Key([mod, "control"], "F4", lazy.spawn("systemctl poweroff")),
-    Key([mod, "control"], "F5", lazy.spawn("systemctl reboot")),
-
-    # SUPER + SHIFT KEYS
-    Key([mod, "shift"], "d", lazy.spawn(
-        "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
-    Key([mod, "shift"], "c", lazy.window.kill()),
-
-    # CONTROL + SHIFT KEYS
-    Key([mod2, "shift"], "Escape", lazy.spawn('xfce4-taskmanager')),
-
-    # MULTIMEDIA KEYS
-    # SCREENSHOTS
-    Key([], "Print", lazy.spawn("flameshot full -p " + home + "/Pictures")),
-    Key([mod], "Print", lazy.spawn("flameshot gui")),
-    # INCREASE/DECREASE BRIGHTNESS
-    # Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +10%")),
-    # Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -10%")),
-    # INCREASE/DECREASE/MUTE VOLUME
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
-    # Play Pause Audio
-    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
-    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
-
-    # QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "space", lazy.next_layout()),
-
-    # CHANGE FOCUS
-    Key([mod], "Up", lazy.layout.up()),
-    Key([mod], "Down", lazy.layout.down()),
-    Key([mod], "Left", lazy.layout.left()),
-    Key([mod], "Right", lazy.layout.right()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-
-
-    # RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-    Key([mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-
-
-    # FLIP LAYOUT FOR MONADTALL/MONADWIDE
-    Key([mod, "shift"], "f", lazy.layout.flip()),
-
-    # FLIP LAYOUT FOR BSP
-    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-
-    # MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-
-    # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
-    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
-
-    # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()), ]
-
-#####################################################################################################################################################################
-############################# Groups (Workspaces) Start #############################################################################################################
-#####################################################################################################################################################################
-groups = []
-
-# FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6"]
-
-#group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-group_labels = ["", "", "", "", "", ""]
-#group_labels = ["Web", "Code", "Terminal", "Filemanagers", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
-
-group_layouts = ["monadtall", "monadtall",
-                 "monadtall", "monadtall", "monadtall", "monadtall"]
-
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            layout=group_layouts[i].lower(),
-            label=group_labels[i],
-        ))
-
-for i in groups:
-    keys.extend([
-        # CHANGE WORKSPACES
-        Key([mod], i.name, lazy.group[i.name].toscreen(toggle=False)),
-        Key([mod], "Tab", lazy.screen.next_group()),
-        Key(["mod1"], "Tab", lazy.screen.next_group()),
-        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
-
-        # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
-        #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
-        # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
-        Key([mod, "shift"], i.name, lazy.window.togroup(
-            i.name), lazy.group[i.name].toscreen(toggle=False)),
-    ])
-
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-# BEGIN
-
-
-@hook.subscribe.client_new
-def assign_app_group(client):
-    d = {}
-    # Browsers
-    d["1"] = ["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser",
-              "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ]
-
-    # Code Editors
-    d["2"] = ["Atom", "Subl3", "Geany", "Brackets", "Code-oss", "Code", "TelegramDesktop", "Discord",
-              "atom", "subl3", "geany", "brackets", "code-oss", "code", "telegramDesktop", "discord", ]
-
-    # Terminals
-    d["3"] = ["Terminator", "Termite", "Alacritty", "urxvt", "Xterm", "Konsole",
-              "terminator", "termite", "alacritty", "urxvt", "xterm", "konsole"]
-
-    # File Managers
-    d["4"] = ["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt",
-              "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", ]
-
-    # Video Players
-    d["5"] = ["Vlc", "vlc", "Mpv", "mpv", "smplayer", "smplayer", "qbittorrent"]
-
-    # Audio Players
-    d["6"] = ["spotify", "Spotify",  "Pragha", "Clementine", "Deadbeef", "Audacious",
-                "pragha", "clementine", "deadbeef", "audacious"]
-
-    wm_class = client.window.get_wm_class()[0]
-
-    for i in range(len(d)):
-        if wm_class in list(d.values())[i]:
-            group = list(d.keys())[i]
-            client.togroup(group)
-            # Set toggle=False for not changing group if current group is same
-            client.group.cmd_toscreen(toggle=False)
-# END
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-
-#####################################################################################################################################################################
-############################# Layouts Start #########################################################################################################################
-#####################################################################################################################################################################
-layout_theme = {"margin": 5,
-                "border_width": 1,
-                "border_focus": color["border_focus"],
-                "border_normal": color["border_normal"]
-                }
-
-
-layouts = [
-    layout.MonadTall(margin=4, border_width=1,
-                     border_focus=color["border_focus"], border_normal=color["border_normal"]),
-    layout.MonadWide(margin=4, border_width=1,
-                     border_focus=color["border_focus"], border_normal=color["border_normal"]),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
-]
-
-#####################################################################################################################################################################
-############################# Bar Start #############################################################################################################################
-#####################################################################################################################################################################
+### Bar ###
 widget_defaults = dict(font=MY_TEXT_FONT,
                        fontsize=MY_FONT_SIZE,
                        padding=5,
                        background=color['barBackground'])
-
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-
 widgets_list = [
     ### Groups ###
     widget.GroupBox(
@@ -306,7 +61,6 @@ widgets_list = [
         foreground=color['groupBackground'],
         background = color['layoutBackground']
     ),
-
     ### Layouts ###
     widget.CurrentLayout(
         foreground=color['layoutForeground'],
@@ -319,15 +73,12 @@ widgets_list = [
         padding = 0,
         foreground=color['layoutBackground'],
     ),
-
-    
     ### Window Name ###
     widget.WindowName(
         foreground=color['windowForeground'],
         background=color['windowBackground'],
         padding = 10
     ),
-
     ### Clock ###
     widget.Clock(
         foreground=color['clockForeground'],
@@ -340,7 +91,25 @@ widgets_list = [
     widget.Spacer(
         length=bar.STRETCH,
     ),
-    
+    ### Music ###
+    widget.Mpris2(
+        foreground=color['musicForeground'],
+        fontsize=10,
+        name='spotify',
+        display_metadata=['xesam:title', 'xesam:artist'],
+        objname="org.mpris.MediaPlayer2.spotify",
+        scroll_chars=None,
+        stop_pause_text='',
+    ),
+    widget.Mpris2(
+        foreground=color['musicForeground'],
+        fontsize=10,
+        name='audacious',
+        objname='org.mpris.MediaPlayer2.audacious',
+        display_metadata=['xesam:title', 'xesam:artist'],
+        scroll_chars=None,
+        stop_pause_text='',
+    ),
     ### CPU ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['cpuBackground']),
     widget.TextBox(
@@ -360,7 +129,6 @@ widgets_list = [
             MY_TERMINAL + " -e htop")},
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color['cpuBackground']),
-    
     ### Memory ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['memoryBackground'],background=color['cpuBackground']),
     widget.TextBox(
@@ -381,7 +149,6 @@ widgets_list = [
             MY_TERMINAL + " -e htop")},
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["memoryBackground"]),
-
     ### HDD ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['hddBackground'],background=color['memoryBackground']),
     widget.TextBox(
@@ -402,7 +169,6 @@ widgets_list = [
             'Button1': lambda qtile: qtile.cmd_spawn(MY_FILE_MANAGER)}
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["hddBackground"]),
-
     ### Volume ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['volBackground'],background=color['hddBackground']),
     widget.TextBox(
@@ -419,7 +185,6 @@ widgets_list = [
         background=color["volBackground"],    
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["volBackground"]),
-    
     ### Updates ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['updateBackground'],background=color['volBackground']),
     widget.TextBox(
@@ -448,7 +213,6 @@ widgets_list = [
             }
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["updateBackground"]),
-
     ### Wallpaper ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['walBackground'],background=color['updateBackground']),
     widget.TextBox(
@@ -464,7 +228,6 @@ widgets_list = [
             }
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color["walBackground"]),
-
     ### Sys Tray ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['trayBackground'],background=color['walBackground']),
     widget.Systray(
@@ -473,7 +236,6 @@ widgets_list = [
         padding = SEP_PADDING,
     ),
     widget.Sep(linewidth=0,padding=SEP_PADDING,background=color['trayBackground']),
-
     ### Quick Exit ###
     widget.TextBox(font=ICON_FONT,fontsize=40,text="",padding=0,foreground=color['exitBackground'],background=color['trayBackground']),
     widget.TextBox(
@@ -486,10 +248,168 @@ widgets_list = [
         mouse_callbacks={'Button1': lambda qtile: qtile.cmd_spawn(LOGOUT_MANAGER)}
     ),
 ]
-
 screens = [Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1)),
             # Screen(top=bar.Bar(widgets=widgets_list, size=PANEL_SIZE, opacity=1))  ## For two monitors
                 ]
+
+### Key Bindings ###
+keys = [
+    # FUNCTION KEYS
+    Key([], "F12", lazy.spawn('xfce4-terminal --drop-down')),
+    # SUPER + FUNCTION KEYS  (Launch Applications)
+    Key([mod], "e", lazy.spawn(MY_FILE_MANAGER)),
+    Key([mod], "c", lazy.spawn(MY_CODE_EDITOR)),
+    Key([mod], "b", lazy.spawn(MY_BROWSER)),
+    Key([mod], "m", lazy.spawn(MY_MUSIC_PLAYER)),
+    Key([mod], "v", lazy.spawn('pavucontrol')),
+    Key([mod], "Escape", lazy.spawn('xkill')),
+    Key([mod], "Return", lazy.spawn(MY_TERMINAL)),
+    Key([mod], "s", lazy.spawn('rofi -show run')),
+    Key([mod], "f", lazy.window.toggle_fullscreen()),
+    # SUPER + CONTROL KEYS
+    Key([mod, "control"], "r", lazy.restart()),
+    Key([mod, "control"], "q", lazy.shutdown()),
+    Key([mod, "control"], "x", lazy.spawn(LOGOUT_MANAGER)),
+    Key([mod, "control"], "F4", lazy.spawn("systemctl poweroff")),
+    Key([mod, "control"], "F5", lazy.spawn("systemctl reboot")),
+    # SUPER + SHIFT KEYS
+    Key([mod, "shift"], "d", lazy.spawn(
+        "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod, "shift"], "c", lazy.window.kill()),
+    # CONTROL + SHIFT KEYS
+    Key([mod2, "shift"], "Escape", lazy.spawn('xfce4-taskmanager')),
+    # MULTIMEDIA KEYS
+    # SCREENSHOTS
+    Key([], "Print", lazy.spawn("flameshot full -p " + home + "/Pictures")),
+    Key([mod], "Print", lazy.spawn("flameshot gui")),
+    # INCREASE/DECREASE BRIGHTNESS
+    # Key([], "XF86MonBrightnessUp", lazy.spawn("blight set +10%")),
+    # Key([], "XF86MonBrightnessDown", lazy.spawn("blight set -10%")),
+    # INCREASE/DECREASE/MUTE VOLUME
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
+    # Play Pause Audio
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
+    # QTILE LAYOUT KEYS
+    Key([mod], "n", lazy.layout.normalize()),
+    Key([mod], "space", lazy.next_layout()),
+    # CHANGE FOCUS
+    Key([mod], "Up", lazy.layout.up()),
+    Key([mod], "Down", lazy.layout.down()),
+    Key([mod], "Left", lazy.layout.left()),
+    Key([mod], "Right", lazy.layout.right()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
+    # RESIZE UP, DOWN, LEFT, RIGHT
+    Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
+    Key([mod, "control"], "Right", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(),lazy.layout.add(),),
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add(),),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(),),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), lazy.layout.shrink(),lazy.layout.increase_nmaster(),),
+    # FLIP LAYOUT FOR MONADTALL/MONADWIDE
+    Key([mod, "shift"], "f", lazy.layout.flip()),
+    # FLIP LAYOUT FOR BSP
+    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
+    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
+    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
+    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+    # MOVE WINDOWS UP OR DOWN BSP LAYOUT
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
+    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
+    # TOGGLE FLOATING LAYOUT
+    Key([mod, "shift"], "space", lazy.window.toggle_floating()), ]
+
+### Groups ###
+groups = []
+group_names = ["1", "2", "3", "4", "5", "6"]
+group_labels = ["", "", "", "", "", ""]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name=group_names[i],
+            layout=group_layouts[i].lower(),
+            label=group_labels[i],
+        ))
+for i in groups:
+    keys.extend([
+        # CHANGE WORKSPACES
+        Key([mod], i.name, lazy.group[i.name].toscreen(toggle=False)),
+        Key([mod], "Tab", lazy.screen.next_group()),
+        Key(["mod1"], "Tab", lazy.screen.next_group()),
+        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
+        # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
+        #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
+        Key([mod, "shift"], i.name, lazy.window.togroup(
+            i.name), lazy.group[i.name].toscreen(toggle=False)),
+    ])
+
+# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
+@hook.subscribe.client_new
+def assign_app_group(client):
+    d = {}
+    # Browsers
+    d["1"] = ["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser",
+              "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ]
+    # Code Editors
+    d["2"] = ["Atom", "Subl3", "Geany", "Brackets", "Code-oss", "Code", "TelegramDesktop", "Discord",
+              "atom", "subl3", "geany", "brackets", "code-oss", "code", "telegramDesktop", "discord", ]
+    # Terminals
+    d["3"] = ["Terminator", "Termite", "Alacritty", "urxvt", "Xterm", "Konsole",
+              "terminator", "termite", "alacritty", "urxvt", "xterm", "konsole"]
+    # File Managers
+    d["4"] = ["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt",
+              "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", ]
+    # Video Players
+    d["5"] = ["Vlc", "vlc", "Mpv", "mpv", "smplayer", "smplayer", "qbittorrent"]
+    # Audio Players
+    d["6"] = ["spotify", "Spotify",  "Pragha", "Clementine", "Deadbeef", "Audacious",
+                "pragha", "clementine", "deadbeef", "audacious"]
+    wm_class = client.window.get_wm_class()[0]
+    for i in range(len(d)):
+        if wm_class in list(d.values())[i]:
+            group = list(d.keys())[i]
+            client.togroup(group)
+            # Set toggle=False for not changing group if current group is same
+            client.group.cmd_toscreen(toggle=False)
+# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
+
+### Layouts ###
+layout_theme = {"margin": 5,
+                "border_width": 1,
+                "border_focus": color["border_focus"],
+                "border_normal": color["border_normal"]
+                }
+
+
+layouts = [
+    layout.MonadTall(margin=4, border_width=1,
+                     border_focus=color["border_focus"], border_normal=color["border_normal"]),
+    layout.MonadWide(margin=4, border_width=1,
+                     border_focus=color["border_focus"], border_normal=color["border_normal"]),
+    layout.Matrix(**layout_theme),
+    layout.Bsp(**layout_theme),
+    layout.Floating(**layout_theme),
+    layout.RatioTile(**layout_theme),
+    layout.Max(**layout_theme)
+]
 
 
 # MOUSE CONFIGURATION
@@ -517,9 +437,7 @@ def set_floating(window):
             or window.window.get_wm_type() in floating_types):
         window.floating = True
 
-
 floating_types = ["notification", "toolbar", "splash", "dialog"]
-
 
 follow_mouse_focus = True
 bring_front_click = False
