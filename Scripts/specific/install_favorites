@@ -1,20 +1,14 @@
 #!/bin/bash
 
-### Upgrading the system
-sudo pacman --noconfirm -Syyu
+currentDE="$1"
+currentPackageManager="$2"
 
-### Install aur helper
-sudo pacman --needed --noconfirm -S yay
+if [[ $currentDE == '-h' || $currentDE == '--help' ]]
+then
+  echo "Usage: install_favorites DESKTOPENV(kde, qtile) DISTRO(fedora, arch)"
+fi
 
-yay_install() {
-    yay -S --noconfirm --needed $1
-}
-
-pacman_install() {
-    sudo pacman -S --noconfirm --needed $1
-}
-
-pacmanlistqtile=(
+packageListqtile=(
 	## notification daemon, rofi and alacritty
 	dunst 
 	rofi 
@@ -76,12 +70,12 @@ pacmanlistqtile=(
 	xcb-util-cursor
 )
 
-yaylistqtile=(
+yayListqtile=(
 	# Fonts
 	ttf-mononoki-git
 )
 
-pacmanlistkde=(
+packageListkde=(
 	flameshot 
 	fzf 
 	ripgrep
@@ -106,26 +100,52 @@ pacmanlistkde=(
 	krename
 )
 
+yay_install() {
+    yay -S --noconfirm --needed $1
+}
 
-count=0
-x="$1"
-req_list=pacmanlist$x[@]
-for name in "${!req_list}" ; do
-	count=$[count+1]
-	tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-	pacman_install $name
-done
-req_list=yaylist$x[@]
-for name in "${!req_list}" ; do
-	count=$[count+1]
-	tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-	yay_install $name
-done
+install_package() {
+    sudo $currentPMSyntax $1
+}
 
+installPackages(){
+	count=0
+	x=$currentDE
+	req_list=packageList$x[@]
+	for name in "${!req_list}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package #.  "$count " " $name;tput sgr0;
+		install_package $name
+	done
+}
+
+installYayPackages(){
+	req_list=yaylist$x[@]
+	for name in "${!req_list}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		yay_install $name
+	done
+}
+
+case $currentPackageManager in
+  "dnf")
+	sudo dnf update -y
+    currentPMSyntax="dnf install -y"
+    ;;
+
+  "pacman")
+	sudo pacman --noconfirm -Syyu
+	sudo pacman --needed --noconfirm -S yay
+	yay_install 
+    currentPMSyntax="pacman --needed --noconfirm -S "
+    ;;
+esac
+installPackages
 
 
 echo
-echo
-echo "Reboot to take effect"
+tput setaf 2;echo "Installation Successfull!";tput sgr0;
+tput setaf 5;echo "Reboot now!!!";tput sgr0;
 
 
