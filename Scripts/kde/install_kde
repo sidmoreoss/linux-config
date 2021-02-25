@@ -1,0 +1,27 @@
+#!/bin/bash
+
+chmod +x ../common/make_executables
+bash ../common/make_executables
+bash ../common/install_binaries
+# bash ../common/install_realtek_alc3246
+bash ../common/install_favorites kde $1
+bash ../common/install_zsh
+
+
+cd ../../.config/
+echo "Moving configuration"
+cp -rv alacritty ~/.config/
+cp -rv nvim ~/.config/
+cp -rv smplayer ~/.config/
+cp -rv pulse ~/.config/
+
+tput setaf 5;echo "Do you want to install pywal(wallpaper accent colors) for firefox??";tput sgr0;
+read input
+
+case $input in
+    y*)
+    ../common/pywal_firefox
+esac
+
+echo
+echo "Reboot to take effect"

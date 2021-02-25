@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo cp -ruvb ../bin/. /usr/local/bin/
+sudo cp -ruvb ../../bin/. /usr/local/bin/
 cd /usr/local/bin/
 sudo chmod +x *
 echo

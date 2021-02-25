@@ -40,6 +40,7 @@ packageListqtile=(
 	epdfview 
 	easytag 
 	playerctl
+	ffmpegthumbs
 
 	## Code Editors, Text Editors
 	neovim 
@@ -98,6 +99,7 @@ packageListkde=(
 	variety 
 	python-pywal
 	krename
+	ffmpegthumbs
 )
 
 yay_install() {
