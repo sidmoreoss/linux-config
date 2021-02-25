@@ -81,7 +81,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 5000
+  history: 50000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -218,8 +218,8 @@ draw_bold_text_with_bright_colors: true
 # colors:
 #   # Default colors
 #   primary:
-    # background: '0x282c34'
-    # foreground: '0xbbc2cf'
+#     # background: '0x282c34'
+#     foreground: '0xbbc2cf'
 
     # Bright and dim foreground colors
     #
@@ -257,7 +257,7 @@ draw_bold_text_with_bright_colors: true
   #   cyan:    '0x5699af'
   #   white:   '0x202328'
 
-  # # Bright colors
+  # # # Bright colors
   # bright:
   #   black:   '0x5b6268'
   #   red:     '0xda8548'
@@ -323,7 +323,7 @@ draw_bold_text_with_bright_colors: true
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 # background_opacity: 1.0
-background_opacity: 0.80
+background_opacity: 0.70
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -570,8 +570,8 @@ key_bindings:
   - { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+    #  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+    #  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
 
   - { key: Paste,                    action: Paste                            }
@@ -585,27 +585,27 @@ key_bindings:
 # BEGIN ACE
 colors:
   primary:
-    background: '0x0A0906'
-    foreground: '0xf0e5d8'
+    background: '0x15120c'
+    foreground: '0xf1dbcb'
   cursor:
-    text:       '0x0A0906'
-    cursor:     '0xf0e5d8'
+    text:       '0x15120c'
+    cursor:     '0xf1dbcb'
   normal:
-    black:      '0x0A0906'
-    red:        '0x7A817B'
-    green:      '0x9F8C73'
-    yellow:     '0xCBA377'
-    blue:       '0xC5AD90'
-    magenta:    '0xEED1A7'
-    cyan:       '0xF1D6B3'
-    white:      '0xf0e5d8'
+    black:      '0x15120c'
+    red:        '0xAC8775'
+    green:      '0xE0A379'
+    yellow:     '0x947E81'
+    blue:       '0xB29088'
+    magenta:    '0xD4A896'
+    cyan:       '0xDFAB93'
+    white:      '0xf1dbcb'
   bright:
-    black:      '0xa8a097'
-    red:        '0x7A817B'
-    green:      '0x9F8C73'
-    yellow:     '0xCBA377'
-    blue:       '0xC5AD90'
-    magenta:    '0xEED1A7'
-    cyan:       '0xF1D6B3'
-    white:      '0xf0e5d8'
+    black:      '0xa8998e'
+    red:        '0xAC8775'
+    green:      '0xE0A379'
+    yellow:     '0x947E81'
+    blue:       '0xB29088'
+    magenta:    '0xD4A896'
+    cyan:       '0xDFAB93'
+    white:      '0xf1dbcb'
 # END ACE

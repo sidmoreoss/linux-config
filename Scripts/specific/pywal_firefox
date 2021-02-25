@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo pacman -S firefox
+
+pip install pywalfox
+
+pywalfox install

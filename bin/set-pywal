@@ -27,15 +27,6 @@ find-wallpaper(){
 	current_wallpaper="$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)"
 }
 
-set-variety() {
-	case "$1" in
-		-f) variety -f ;;
-		-p) variety -p ;;
-		-n) variety -n ;;
-	esac
-}
-
-
 otherApps(){
 	walColorsForDunst
 	walAlacritty
@@ -49,10 +40,16 @@ i3-restart(){
 	i3-msg restart
 }
 
+kscreenlockwal(){
+	kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$current_wallpaper"
+	echo "kde lock screen wallpaper changed"
+}
+
 restart-wm(){
 	case "$1" in
 		qtile) qtile-restart; exit;;
 		i3) i3-restart; exit;;
+		kde) kscreenlockwal; exit;;
 	esac
 }
 
@@ -62,7 +59,10 @@ set-wal(){
 	otherApps
 	restart-wm $1
 }
-
+set-variety(){
+	variety $1 &
+	sleep 5
+}
 setwal() {
 	case "$2" in
 		-f) set-variety -f && set-wal $1 && exit;;
@@ -71,6 +71,5 @@ setwal() {
 		-u) set-wal $1 && exit;;
 	esac
 }
-
-# $1 is the wm name and $2 is the action (next, preivous, update)
+# $1 is the wm(window manager eg. KDE, GNOME, Qtile, etc) name and $2 is the action (next, preivous, update)
 setwal $1 $2

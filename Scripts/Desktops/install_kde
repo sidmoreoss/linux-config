@@ -1,0 +1,25 @@
+#!/bin/bash
+
+bash ../specific/make_executables
+bash ../specific/install_binaries
+bash ../specific/install_realtek_alc3246
+bash ../specific/install_favorites kde
+bash ../specific/install_bash
+
+
+cd ../.config/
+echo "Moving configuration"
+cp -rv alacritty ~/.config/
+cp -rv nvim ~/.config/
+cp -rv smplayer ~/.config/
+cp -rv pulse ~/.config/
+
+
+cd ~/Desktop/
+git clone https://github.com/ishovkun/taglist
+cd taglist
+kpackagetool5 -t Plasma/Applet --install package
+
+
+echo
+echo "Reboot to take effect"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+# Create avatar png files and required symlink
+cp .face.png ~/
+ln -s ~/.face.png ~/.face.icon
+
+# Set permissions for sddm
+setfacl -m u:sddm:x ~/
+setfacl -m u:sddm:r ~/.face.icon
+
+

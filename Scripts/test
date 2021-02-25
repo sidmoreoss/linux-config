@@ -1,0 +1,75 @@
+#!/bin/bash
+
+pacmanlistqtile=(
+## notification daemon, rofi and alacritty
+dunst 
+rofi 
+alacritty
+
+## misc tools
+flameshot 
+fzf 
+ripgrep
+
+
+## Browsers
+brave 
+firefox 
+qbittorrent
+
+## File managers
+thunar 
+thunar-volman 
+thunar-archive-plugin 
+thunar-media-tags-plugin 
+thunar-shares-plugin
+gtkhash-thunar
+
+## Media tools
+audacious 
+smplayer 
+shotwell 
+epdfview 
+easytag 
+playerctl
+
+## Code Editors, Text Editors
+neovim 
+geany
+marker
+
+## Fonts
+ttf-font-awesome 
+ttf-jetbrains-mono 
+ttf-inconsolata 
+ttf-dejavu
+
+## Wallpaper Changers
+variety 
+python-pywal 
+
+## System utilities
+arandr 
+lxappearance
+file-roller
+polkit-gnome 
+python-psutil
+xfce4-power-manager 
+xfce4-settings 
+xfconf
+qt5ct 
+kvantum-qt5 
+xcb-util-cursor
+)
+
+pacmanlistkde=(
+    test1
+    test2
+)
+
+
+x="$1"
+req_list=pacmanlist$x[@]
+
+echo "${!req_list}"
+

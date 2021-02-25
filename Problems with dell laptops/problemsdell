@@ -1,0 +1,1 @@
+Dell laptops seem to have a bios issue where restarting the system from another distro and entering the bios boot select screen seems to set proper alsa driver options like stream and amp vals.

@@ -1,0 +1,13 @@
+[MIME Cache]
+application/json=firefox.desktop;
+application/pdf=firefox.desktop;google-chrome.desktop;vivaldi-stable.desktop;
+application/rdf+xml=google-chrome.desktop;vivaldi-stable.desktop;
+application/rss+xml=google-chrome.desktop;vivaldi-stable.desktop;
+application/x-xpinstall=firefox.desktop;
+application/xhtml+xml=firefox.desktop;google-chrome.desktop;vivaldi-stable.desktop;
+application/xml=firefox.desktop;google-chrome.desktop;vivaldi-stable.desktop;
+image/gif=google-chrome.desktop;vivaldi-stable.desktop;
+image/jpeg=google-chrome.desktop;vivaldi-stable.desktop;
+image/png=google-chrome.desktop;vivaldi-stable.desktop;
+image/webp=google-chrome.desktop;vivaldi-stable.desktop;
+text/html=firefox.desktop;google-chrome.desktop;vivaldi-stable.desktop;

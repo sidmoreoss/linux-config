@@ -39,6 +39,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dylanaraps/wal.vim'
+Plug 'davidhalter/jedi-vim'
 " call PlugInstall to install plugins
 call plug#end()
 colorscheme wal

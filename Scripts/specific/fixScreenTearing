@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir -vp /etc/X11/xorg.conf.d/
+
+sudo cp -rvub ../Drivers/IntelDisplayDriver/20-intel.conf /etc/X11/xorg.conf.d/ && echo "Fixed, Logout and Log back in!"
