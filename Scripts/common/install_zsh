@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ../../ZSH/ || exit
+
+## Uncomment to install bash
+# shopt -s dotglob nullglob
+# cp -rv bash* ~/
+
+# Install ZSH by default
+cp .zshrc ~/
+cp .aliases ~/
+
+chsh -s "$(which zsh)"

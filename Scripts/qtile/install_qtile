@@ -10,7 +10,7 @@ echo
 echo "Configuring Qtile"
 echo
 
-cd ../../.config/
+cd ../../.config/ || exit
 echo "Removing previous qtile configuration"
 rm -rv ~/.config/qtile
 mkdir ~/.config/qtile
@@ -35,14 +35,14 @@ qtile-cmd -o cmd -f restart
 echo
 echo "Configuring Bash"
 echo
-cd ../Scripts/specific/
+cd ../Scripts/specific/ || exit
 bash install_bash
 
 echo
 printf "Do you want to install pulseaudio? [y/n]"
-read choice
+read -r choice
 
-if [ $choice == y ]
+if [ "$choice" == y ]
 then
     echo "Installing pulse"
     bash install_sound
@@ -52,9 +52,9 @@ fi
 
 echo
 printf "Do you want to install bluetooth? [y/n]"
-read choice
+read -r choice
 
-if [ $choice == y ]
+if [ "$choice" == y ]
 then
     echo "Installing bluetooth"
     bash install_bluetooth

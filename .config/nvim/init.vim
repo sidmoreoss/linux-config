@@ -1,5 +1,3 @@
-if has('python3')
-endif
 syntax on
 " inoremap {<CR> {<CR>}<Esc>ko
 set noshowmatch
@@ -25,7 +23,7 @@ Plug 'mizuchi/stl-syntax'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git clone https://github.com/ishovkun/taglist
-cd taglist
+cd taglist || return
 
 echo "Installing taglist"
 kpackagetool5 -t Plasma/Applet --install package
@@ -9,13 +9,13 @@ kpackagetool5 -t Plasma/Applet --install package
 echo
 echo "Success"
 
-echo 
+echo
 echo "Cleaning workspace"
 cd ..
 rm -r taglist
 
-echo 
+echo
 echo "Successfully installed taglist, now apply the widget using \'Add Widget\' option"
 
-echo 
+echo
 echo "For more details visit: https://github.com/ishovkun/taglist"

@@ -2,7 +2,7 @@
 
 chmod +x *
 
-cd extras/
+cd extras/ || exit
 
 chmod +x *
 

@@ -1,105 +1,116 @@
 #!/bin/bash
 
-currentDE="$1"
-currentPackageManager="$2"
+currentDE=$(./get_desktop_env)
+
+current_distro=$(./get_distro)
+case $current_distro in
+    fedora) currentPackageManager="dnf";;
+    arch) currentPackageManager="pacman";;
+    ubuntu) currentPackageManager="apt";;
+    manjaro) currentPackageManager="pacman";;
+esac
 
 if [[ $currentDE == '-h' || $currentDE == '--help' ]]
 then
-  echo "Usage: install_favorites DESKTOPENV(kde, qtile) DISTRO(fedora, arch)"
+    echo "Usage: install_favorites DESKTOPENV(kde, qtile) DISTRO(fedora, arch)"
 fi
 
 packageListqtile=(
-	## notification daemon, rofi and alacritty
-	dunst 
-	rofi 
-	alacritty
-
-	## misc tools
-	flameshot 
-	fzf 
-	ripgrep
-
-
-	## Browsers
-	brave 
-	firefox 
-	qbittorrent
-
-	## File managers
-	thunar 
-	thunar-volman 
-	thunar-archive-plugin 
-	thunar-media-tags-plugin 
-	thunar-shares-plugin
-	gtkhash-thunar
-
-	## Media tools
-	audacious 
-	smplayer 
-	shotwell 
-	epdfview 
-	easytag 
-	playerctl
-	ffmpegthumbs
-
-	## Code Editors, Text Editors
-	neovim 
-	geany
-	marker
-
-	## Fonts
-	ttf-font-awesome 
-	ttf-jetbrains-mono 
-	ttf-inconsolata 
-	ttf-dejavu
-
-	## Wallpaper Changers
-	variety 
-	python-pywal 
-
-	## System utilities
-	arandr 
-	lxappearance
-	file-roller
-	polkit-gnome 
-	python-psutil
-	xfce4-power-manager 
-	xfce4-settings 
-	xfconf
-	qt5ct 
-	kvantum-qt5 
-	xcb-util-cursor
+    ## notification daemon, rofi and alacritty
+    dunst
+    rofi
+    alacritty
+    
+    ## misc tools
+    flameshot
+    fzf
+    ripgrep
+    
+    
+    ## Browsers
+    brave
+    firefox
+    qbittorrent
+    
+    ## File managers
+    thunar
+    thunar-volman
+    thunar-archive-plugin
+    thunar-media-tags-plugin
+    thunar-shares-plugin
+    gtkhash-thunar
+    
+    ## Media tools
+    audacious
+    smplayer
+    shotwell
+    epdfview
+    easytag
+    playerctl
+    ffmpegthumbs
+    
+    ## Code Editors, Text Editors
+    neovim
+    geany
+    marker
+    
+    ## Fonts
+    ttf-font-awesome
+    ttf-jetbrains-mono
+    ttf-inconsolata
+    ttf-dejavu
+    
+    ## Wallpaper Changers
+    variety
+    python-pywal
+    
+    ## System utilities
+    arandr
+    lxappearance
+    file-roller
+    polkit-gnome
+    python-psutil
+    xfce4-power-manager
+    xfce4-settings
+    xfconf
+    qt5ct
+    kvantum-qt5
+    xcb-util-cursor
+    zsh
+    python3-pip
 )
 
 yayListqtile=(
-	# Fonts
-	ttf-mononoki-git
+    # Fonts
+    ttf-mononoki-git
 )
 
 packageListkde=(
-	flameshot 
-	fzf 
-	ripgrep
-
-	brave 
-	firefox 
-	qbittorrent
-
-	audacious 
-	smplayer
-	playerctl
-
-	neovim
-
-	ttf-font-awesome 
-	ttf-jetbrains-mono 
-	ttf-inconsolata 
-	ttf-dejavu
-
-	variety 
-	python-pywal
-	krename
-	ffmpegthumbs
+    flameshot
+    fzf
+    ripgrep
+    zsh
+    
+    brave
+    firefox
+    qbittorrent
+    
+    audacious
+    smplayer
+    playerctl
+    
+    neovim
+    
+    ttf-font-awesome
+    ttf-jetbrains-mono
+    ttf-inconsolata
+    ttf-dejavu
+    
+    variety
+    python-pywal
+    krename
+    ffmpegthumbs
+    python3-pip
 )
 
 yay_install() {
@@ -111,40 +122,40 @@ install_package() {
 }
 
 installPackages(){
-	count=0
-	x=$currentDE
-	req_list=packageList$x[@]
-	for name in "${!req_list}" ; do
-		count=$[count+1]
-		tput setaf 3;echo "Installing package #.  "$count " " $name;tput sgr0;
-		install_package $name
-	done
+    count=0
+    x=$currentDE
+    req_list=packageList$x[@]
+    for name in "${!req_list}" ; do
+        count=$[count+1]
+        tput setaf 3;echo "Installing package #.  "$count " " $name;tput sgr0;
+        install_package $name
+    done
 }
 
 installYayPackages(){
-	req_list=yaylist$x[@]
-	for name in "${!req_list}" ; do
-		count=$[count+1]
-		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-		yay_install $name
-	done
+    req_list=yaylist$x[@]
+    for name in "${!req_list}" ; do
+        count=$[count+1]
+        tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+        yay_install $name
+    done
 }
 
 case $currentPackageManager in
-  "dnf")
-	sudo dnf update -y
-    currentPMSyntax="dnf install -y"
+    "dnf")
+        sudo dnf update -y
+        currentPMSyntax="dnf install -y"
     ;;
-
-  "pacman")
-	sudo pacman --noconfirm -Syyu
-	sudo pacman --needed --noconfirm -S yay
-	yay_install 
-    currentPMSyntax="pacman --needed --noconfirm -S "
+    
+    "pacman")
+        sudo pacman --noconfirm -Syyu
+        sudo pacman --needed --noconfirm -S yay
+        yay_install
+        currentPMSyntax="pacman --needed --noconfirm -S "
     ;;
 esac
 installPackages
-
+sudo pip3 install pywal
 
 echo
 tput setaf 2;echo "Installation Successfull!";tput sgr0;

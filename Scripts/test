@@ -1,7 +1,5 @@
-tput setaf 5;echo "Do you want to install pywal(wallpaper accent colors) for firefox??";tput sgr0;
-read input
+#!/bin/bash
 
-case $input in
-    y*)
-    ../common/pywal_firefox
-esac
+currentOS=$(./common/get_desktop_env)
+
+echo $currentOS

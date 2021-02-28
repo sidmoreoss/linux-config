@@ -1,0 +1,73 @@
+#!/bin/bash
+
+
+install_brave_fedora_nightly(){
+    sudo dnf install dnf-plugins-core -y
+    sudo dnf config-manager --add-repo https://brave-browser-rpm-nightly.s3.brave.com/x86_64/ -y
+    sudo rpm --import https://brave-browser-rpm-nightly.s3.brave.com/brave-core-nightly.asc
+    sudo dnf install brave-browser-nightly -y
+}
+
+install_brave_fedora_stable(){
+    sudo dnf install dnf-plugins-core -y
+    sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/ -y
+    sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+    sudo dnf install brave-browser  -y
+}
+
+install_brave_fedora_beta(){
+    sudo dnf install dnf-plugins-core -y
+    sudo dnf config-manager --add-repo https://brave-browser-rpm-beta.s3.brave.com/x86_64/ -y
+    sudo rpm --import https://brave-browser-rpm-beta.s3.brave.com/brave-core-nightly.asc
+    sudo dnf install brave-browser-beta -y
+}
+
+
+
+install_brave_ubuntu_stable(){
+    sudo apt install apt-transport-https curl gnupg -y
+    curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add - -y
+    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    sudo apt update -y
+    sudo apt install brave-browser -y
+}
+install_brave_ubuntu_beta(){
+    sudo apt install apt-transport-https curl gnupg -y
+    curl -s https://brave-browser-apt-beta.s3.brave.com/brave-core-nightly.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-prerelease.gpg add - -y
+    echo "deb [arch=amd64] https://brave-browser-apt-beta.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-beta.list
+    sudo apt update -y
+    sudo apt install brave-browser-beta -y
+}
+install_brave_ubuntu_nightly(){
+    sudo apt install apt-transport-https curl gnupg -y
+    curl -s https://brave-browser-apt-nightly.s3.brave.com/brave-core-nightly.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-prerelease.gpg add - -y
+    echo "deb [arch=amd64] https://brave-browser-apt-nightly.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-nightly.list -y
+    sudo apt update -y
+    sudo apt install brave-browser-nightly -y
+}
+
+install_brave_arch_stable(){
+    sudo pacman -S --noconfirm brave
+}
+install_brave_arch_beta(){
+    sudo yay -S --noconfirm brave-beta-bin
+}
+install_brave_arch_nightly(){
+    sudo yay -S --noconfirm brave-nightly-bin
+}
+
+current_distro=$(./get_distro)
+
+tput setaf 1;echo "Which channel of Brave do you want to install?";tput sgr0;
+tput setaf 4;echo "Stable: (1)";tput sgr0;
+tput setaf 4;echo "Beta: (2)";tput sgr0;
+tput setaf 4;echo "Nightly: (3)";tput sgr0;
+
+read -r channel
+
+case $channel in
+    1) echo "Installing Brave Stable"; "install_brave_""$current_distro""_stable";;
+    2) echo "Installing Brave Beta"; "install_brave_""$current_distro""_beta";;
+    3) echo "Installing Brave Nightly"; "install_brave_""$current_distro""_nightly";;
+    *) echo "Installing Brave Stable"; "install_brave_""$current_distro""_stable";;
+esac

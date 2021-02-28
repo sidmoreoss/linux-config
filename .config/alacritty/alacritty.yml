@@ -3,14 +3,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+#env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  #TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -585,27 +585,27 @@ key_bindings:
 # BEGIN ACE
 colors:
   primary:
-    background: '0x15120c'
-    foreground: '0xf1dbcb'
+    background: '0x181912'
+    foreground: '0xaabde7'
   cursor:
-    text:       '0x15120c'
-    cursor:     '0xf1dbcb'
+    text:       '0x181912'
+    cursor:     '0xaabde7'
   normal:
-    black:      '0x15120c'
-    red:        '0xAC8775'
-    green:      '0xE0A379'
-    yellow:     '0x947E81'
-    blue:       '0xB29088'
-    magenta:    '0xD4A896'
-    cyan:       '0xDFAB93'
-    white:      '0xf1dbcb'
+    black:      '0x181912'
+    red:        '0xB9955F'
+    green:      '0x3453A6'
+    yellow:     '0x4865A5'
+    blue:       '0x4C72D4'
+    magenta:    '0x837F80'
+    cyan:       '0x7487AD'
+    white:      '0xaabde7'
   bright:
-    black:      '0xa8998e'
-    red:        '0xAC8775'
-    green:      '0xE0A379'
-    yellow:     '0x947E81'
-    blue:       '0xB29088'
-    magenta:    '0xD4A896'
-    cyan:       '0xDFAB93'
-    white:      '0xf1dbcb'
+    black:      '0x7684a1'
+    red:        '0xB9955F'
+    green:      '0x3453A6'
+    yellow:     '0x4865A5'
+    blue:       '0x4C72D4'
+    magenta:    '0x837F80'
+    cyan:       '0x7487AD'
+    white:      '0xaabde7'
 # END ACE
