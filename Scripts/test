@@ -1,5 +1,32 @@
 #!/bin/bash
 
-currentOS=$(./common/get_desktop_env)
+packageListkde=(
+flameshot
+fzf
+ripgrep
+zsh
 
-echo $currentOS
+brave
+firefox
+qbittorrent
+
+audacious
+smplayer
+playerctl
+
+neovim
+
+ttf-font-awesome
+ttf-jetbrains-mono
+ttf-inconsolata
+ttf-dejavu
+
+variety
+python-pywal
+krename
+ffmpegthumbs
+python3-pip
+)
+
+# echo $packageListkde
+echo ${packageListkde[@]}

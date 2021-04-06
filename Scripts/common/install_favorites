@@ -3,12 +3,17 @@
 currentDE=$(./get_desktop_env)
 
 current_distro=$(./get_distro)
+
+# echo $current_distro
 case $current_distro in
     fedora) currentPackageManager="dnf";;
     arch) currentPackageManager="pacman";;
     ubuntu) currentPackageManager="apt";;
     manjaro) currentPackageManager="pacman";;
+    "garuda linux") currentPackageManager="pacman";;
 esac
+
+# echo $currentPackageManager
 
 if [[ $currentDE == '-h' || $currentDE == '--help' ]]
 then
@@ -78,6 +83,8 @@ packageListqtile=(
     xcb-util-cursor
     zsh
     python3-pip
+    python-pip
+    axel
 )
 
 yayListqtile=(
@@ -111,6 +118,9 @@ packageListkde=(
     krename
     ffmpegthumbs
     python3-pip
+    python-pip
+    
+    axel
 )
 
 yay_install() {
@@ -141,6 +151,16 @@ installYayPackages(){
     done
 }
 
+install_yay(){
+    sudo pacman -Syyu --noconfirm
+    sudo pacman -S git --noconfirm
+    mkdir -p ~/Downloads
+    cd ~/Downloads || exit
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+}
+
 case $currentPackageManager in
     "dnf")
         sudo dnf update -y
@@ -149,16 +169,23 @@ case $currentPackageManager in
     
     "pacman")
         sudo pacman --noconfirm -Syyu
-        sudo pacman --needed --noconfirm -S yay
+        install_yay
         yay_install
         currentPMSyntax="pacman --needed --noconfirm -S "
     ;;
 esac
 installPackages
 sudo pip3 install pywal
-
 echo
 tput setaf 2;echo "Installation Successfull!";tput sgr0;
 tput setaf 5;echo "Reboot now!!!";tput sgr0;
+
+
+tput setaf 2;echo "Instaling Other Apps...";tput sgr0;
+./install_google_chrome
+./install_visual_studio_code
+./install_brave
+
+
 
 

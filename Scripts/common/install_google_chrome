@@ -1,0 +1,21 @@
+#!/bin/bash
+
+install_for_ubuntu(){
+    cd ~/Downloads || mkdir ~/Downloads && cd ~/Downloads || exit;
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt install ./google-chrome-stable_current_amd64.deb -y
+}
+
+install_for_fedora(){
+    cd ~/Downloads || mkdir ~/Downloads && cd ~/Downloads || exit;
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+    sudo dnf install google-chrome -y
+}
+
+install_for_arch(){
+    yay -S google-chrome --noconfirm
+}
+
+current_distro=$(./get_distro)
+
+"install_for_""$current_distro"

@@ -5,11 +5,12 @@ bash ../common/make_executables
 bash ../common/install_binaries
 # bash ../common/install_realtek_alc3246
 bash ../common/install_favorites kde
-bash ../common/install_zsh
+# bash ../common/install_zsh
 
 
 cd ../../.config/ || exit
 echo "Moving configuration"
+cp -rv variety ~/.config/
 cp -rv alacritty ~/.config/
 cp -rv nvim ~/.config/
 cp -rv smplayer ~/.config/
@@ -22,8 +23,7 @@ tput setaf 5;echo "Do you want to install pywal(wallpaper accent colors) for fir
 read -r input
 
 case $input in
-    y*)
-        ../common/pywal_firefox
+    y*)../common/pywal_firefox
 esac
 
 echo

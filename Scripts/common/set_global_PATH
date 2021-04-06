@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat >> /etc/profile.d/myPath.sh << \EOF
+PATH=$PATH:~/.local/bin
+EOF

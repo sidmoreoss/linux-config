@@ -10,8 +10,4 @@ cd ../../ZSH/ || exit
 cp .zshrc ~/
 cp .aliases ~/
 
-cd ../.config/ || exit
-cp -r oh-my-zsh ~/.config/
-
-
 chsh -s "$(which zsh)"
