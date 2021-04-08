@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo "....................  Installing ZSH  .........................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+
+
 cd ../../ZSH/ || exit
 
 ## Uncomment to install bash
@@ -7,11 +14,14 @@ cd ../../ZSH/ || exit
 # cp -rv bash* ~/
 
 # Install ZSH by default
-cp .zshrc ~/
-cp .aliases ~/
+cp -ruvb .zshrc ~/ || exit
+cp -ruvb .aliases ~/ || exit
 
 cd ../.config/ || exit
-cp -r oh-my-zsh ~/.config/
+cp -r oh-my-zsh ~/.config/ || exit
 
 
 chsh -s "$(which zsh)"
+
+
+# Breaking because ohmyzsh is a sub repo

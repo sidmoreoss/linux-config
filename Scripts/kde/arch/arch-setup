@@ -1,5 +1,7 @@
 #!/bin/bash
 
-../setAvatar
+sudo true;
 
-../install_kde
+../setAvatar || exit;
+
+../install_kde pacman || exit;

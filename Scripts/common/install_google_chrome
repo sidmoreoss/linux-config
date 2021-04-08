@@ -1,21 +1,31 @@
 #!/bin/bash
 
-install_for_ubuntu(){
+
+tput setaf 5;echo "Do you want to install Google Chrome? [y/n]";tput sgr0;
+read -t 30 -r input
+case $input in
+    y*) ;;
+    *) exit ;;
+
+esac
+
+install_for_apt(){
     cd ~/Downloads || mkdir ~/Downloads && cd ~/Downloads || exit;
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo apt install ./google-chrome-stable_current_amd64.deb -y
 }
 
-install_for_fedora(){
+install_for_dnf(){
     cd ~/Downloads || mkdir ~/Downloads && cd ~/Downloads || exit;
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
     sudo dnf install google-chrome -y
 }
 
-install_for_arch(){
+install_for_pacman(){
     yay -S google-chrome --noconfirm
 }
 
-current_distro=$(./get_distro)
 
-"install_for_""$current_distro"
+current_package_manager="$1"
+
+"install_for_""$current_package_manager"

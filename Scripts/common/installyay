@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+install_yay_script(){
+    if ! builtin type -p 'yay' >/dev/null 2>&1; then
+    echo 'Install yay.'
+    sudo pacman -S --needed base base-devel wget --noconfirm
+    tmpdir="$(command mktemp -d)"
+    command cd "${tmpdir}" || return 1
+    dl_url="$(
+        curl -sfLS 'https://api.github.com/repos/Jguer/yay/releases/latest' | grep 'browser_download_url' | tail -1 | cut -d '"' -f 4
+    )"
+    command wget "${dl_url}"
+    command tar xzvf yay_*_x86_64.tar.gz
+    command cd yay_*_x86_64 || return 1
+    ./yay -Sy yay-bin
+    rm -rf "${tmpdir}"
+    fi
+}
+
+install_yay_script

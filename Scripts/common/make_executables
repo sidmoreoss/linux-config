@@ -1,13 +1,19 @@
 #!/bin/bash
 
-chmod +x *
 
-cd extras/ || exit
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo ".............  Making all scripts executable  .................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
 
-chmod +x *
+chmod +x utils/* || echo "cannot modify"
+
+chmod +x ./*
 
 mkdir -vp ~/.local/bin/
 
-mkdir -v ~/.config/
+mkdir -vp ~/.config/
 
-mkdir -v ~/.cache/
+mkdir -vp ~/.cache/
+
+# Tested works fine

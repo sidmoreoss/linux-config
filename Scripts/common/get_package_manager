@@ -30,4 +30,17 @@ else
     VER=$(uname -r)
 fi
 
-echo "$OS" | tr '[:upper:]' '[:lower:]'
+current_distro=$(echo "$OS" | tr '[:upper:]' '[:lower:]')
+
+
+currentPackageManager=''
+case $current_distro in
+    fedora) currentPackageManager="dnf";;
+    "arch linux") currentPackageManager="pacman";;
+    ubuntu) currentPackageManager="apt";;
+    "manjaro linux") currentPackageManager="pacman";;
+    "garuda linux") currentPackageManager="pacman";;
+    *) echo "Cannot find package manager for you distro. Check get_package_manager file." && exit;;
+esac
+
+echo $currentPackageManager

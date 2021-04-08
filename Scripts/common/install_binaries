@@ -1,8 +1,21 @@
 #!/bin/bash
 
-sudo ./set_global_PATH
-sudo cp -ruvb ../../bin/. ~/.local/bin/
-cd ~/.local/bin/ || exit
-sudo chmod +x *
+
 echo
-echo "Binaries installed"
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo ".................  Installing Binaries  .......................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+# setting global path to ensure binaries work
+sudo ./set_global_PATH || exit;
+
+# move the binaries to bin
+mkdir -p ~/.local/bin/ || exit;
+sudo cp -ruvb ../../bin/. ~/.local/bin/ || exit;
+
+# set execute permission to the binaries
+cd ~/.local/bin/ || exit;
+sudo chmod +x * || exit;
+
+# Tested
+

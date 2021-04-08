@@ -1,8 +1,14 @@
 #!/bin/bash
 
 
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo "..................Installing your avatar.......................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+
 # Create avatar png files and required symlink
-cp .face.png ~/
+cp ../.face.png ~/ -v
 ln -s ~/.face.png ~/.face.icon
 
 # Set permissions for sddm
@@ -10,3 +16,4 @@ setfacl -m u:sddm:x ~/
 setfacl -m u:sddm:r ~/.face.icon
 
 
+# Tested, works fine.

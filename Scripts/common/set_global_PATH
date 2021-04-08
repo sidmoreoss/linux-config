@@ -1,5 +1,13 @@
 #!/bin/bash
 
-cat >> /etc/profile.d/myPath.sh << \EOF
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo ".................  Setting global path  .......................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+
+cat > /etc/profile.d/myPathForBinaries.sh << \EOF
 PATH=$PATH:~/.local/bin
 EOF
+
+# Tested works fine
