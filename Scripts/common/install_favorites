@@ -114,6 +114,10 @@ packageListkde=(
     
     axel
     latte-dock-git
+    plasma5-applets-virtual-desktop-bar-git
+    plasma5-applets-window-title
+    plasma5-applets-window-appmenu-git
+    plasma5-applets-window-buttons-git
 )
 
 yay_install() {
