@@ -20,5 +20,5 @@ cd ../../ZSH/ || exit
 # cp -rv bash* ~/
 
 # Install ZSH by default
-cp -uvbl .zshrc ~/ || exit
-cp -uvbl .aliases ~/ || exit
+cp -bl .zshrc ~/ || exit
+cp -bl .aliases ~/ || exit

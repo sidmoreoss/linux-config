@@ -92,7 +92,7 @@ packageListkde=(
     git
     wget
     curl
-    
+    sddm
     brave
     firefox
     qbittorrent
@@ -216,7 +216,7 @@ esac
 
 # Install pywal (wallpaper)
 sudo pip3 install pywal
-
+sudo systemctl enable sddm.service --force
 echo
 tput setaf 2;echo "Installation Successfull!";tput sgr0;
 tput setaf 5;echo "Reboot now!!!";tput sgr0;
