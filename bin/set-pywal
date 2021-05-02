@@ -126,7 +126,7 @@ walColorsForDunst(){
     fi
     
     echo "\nApplying Dunst configuration\n"
-    cp -u ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
+    cp -ul ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
     
     # Symlink dunst config
     ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc

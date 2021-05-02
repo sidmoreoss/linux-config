@@ -26,16 +26,16 @@ cp -rv nvim ~/.config/  || exit;
 cp -rv smplayer ~/.config/  || exit;
 cp -rv pulse ~/.config/  || exit;
 
-
 # Install Pywal (Wallpaper accent colors chooser)
 # TODO: Verify that set-pywal is correctly installed
 set-pywal kde -n
 
-tput setaf 5;echo "Do you want to install pywal (wallpaper accent colors) for firefox??";tput sgr0;
-read -r input
-case $input in
-    y*) ./pywal_firefox  || exit;
-esac
+# tput setaf 5;echo "Do you want to install pywal (wallpaper accent colors) for firefox??";tput sgr0;
+# read -r input
+# case $input in
+#     y*) ./pywal_firefox  || exit;
+# esac
+
 
 echo "Zsh was not installed due to stability issues, please install manually"
 echo "Reboot to take effect"

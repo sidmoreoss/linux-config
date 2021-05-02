@@ -89,6 +89,9 @@ packageListkde=(
     fzf
     ripgrep
     zsh
+    git
+    wget
+    curl
     
     brave
     firefox
@@ -191,7 +194,7 @@ case $currentPackageManager in
     
     "pacman")
         install_yay || (echo "Yay cannot be installed, hence aborting" && exit);
-        yay --needed --noconfirm -S rate-arch-mirrors || (echo "Rate arch mirrors cannot be installed, hence aborting" && exit);
+        yay --needed --noconfirm -S rate-arch-mirrors || (echo "Rate arch mirrors cannot be installed, aborting" && exit);
         ua-drop-caches
         ua-update-all
         currentPMSyntax="pacman --needed --noconfirm -S "
@@ -218,11 +221,11 @@ tput setaf 2;echo "Installation Successfull!";tput sgr0;
 tput setaf 5;echo "Reboot now!!!";tput sgr0;
 
 
-tput setaf 2;echo "Instaling Other Apps...";tput sgr0;
+# tput setaf 2;echo "Instaling Other Apps...";tput sgr0;
 
-./install_google_chrome $1
-./install_visual_studio_code $1
-./install_brave $1
+# # ./install_google_chrome $1
+# # ./install_visual_studio_code $1
+# # ./install_brave $1
 
 
 

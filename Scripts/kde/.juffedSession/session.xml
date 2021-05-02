@@ -1,5 +1,6 @@
 <!DOCTYPE JuffEd_Session>
 <Session>
- <file panel="left" scrollPos="0" path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/kde/installIconOnlyDesktopPager" cursorPos="20;66"/>
- <view rightCurIndex="-1" leftCurIndex="0"/>
+ <file panel="left" cursorPos="20;66" path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/kde/installIconOnlyDesktopPager" scrollPos="0"/>
+ <file panel="left" cursorPos="37;4" path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/kde/install_kde" scrollPos="0"/>
+ <view rightCurIndex="-1" leftCurIndex="1"/>
 </Session>

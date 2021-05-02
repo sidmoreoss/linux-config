@@ -11,11 +11,10 @@ sudo ./set_global_PATH || exit;
 
 # move the binaries to bin
 mkdir -p ~/.local/bin/ || exit;
-sudo cp -ruvb ../../bin/. ~/.local/bin/ || exit;
+sudo cp -rluvb ../../bin/. ~/.local/bin/ || exit;
 
 # set execute permission to the binaries
 cd ~/.local/bin/ || exit;
 sudo chmod +x * || exit;
 
 # Tested
-
