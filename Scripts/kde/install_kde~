@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo "..................  Installing KDE Desktop  ...................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+cd ../../common || exit;
+
+## Install apps and binaries
+chmod +x make_executables
+./make_executables || exit;
+./install_binaries || exit;
+./install_favorites "$1" kde|| exit;
+
+# breaking so not recommended (Do it manually)
+#bash ../common/install_zsh
+
+
+## Install configuration
+cd ../../.config/ || exit;
+echo "Moving configurations"
+cp -rv variety ~/.config/  || exit;
+cp -rv alacritty ~/.config/  || exit;
+cp -rv nvim ~/.config/  || exit;
+cp -rv smplayer ~/.config/  || exit;
+cp -rv pulse ~/.config/  || exit;
+
+
+# Install Pywal (Wallpaper accent colors chooser)
+# TODO: Verify that set-pywal is correctly installed
+set-pywal kde -n
+
+tput setaf 5;echo "Do you want to install pywal (wallpaper accent colors) for firefox??";tput sgr0;
+read -r input
+case $input in
+    y*) ./pywal_firefox  || exit;
+esac
+
+echo "Zsh was not installed due to stability issues, please install manually"
+echo "Reboot to take effect"
