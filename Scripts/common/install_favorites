@@ -107,7 +107,7 @@ packageListkde=(
     ttf-jetbrains-mono
     ttf-inconsolata
     ttf-dejavu
-    
+    alacritty
     variety
     python-pywal
     krename
