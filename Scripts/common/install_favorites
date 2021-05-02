@@ -121,6 +121,7 @@ packageListkde=(
     plasma5-applets-window-title
     plasma5-applets-window-appmenu-git
     plasma5-applets-window-buttons-git
+    kvantum-qt5
 )
 
 yay_install() {
