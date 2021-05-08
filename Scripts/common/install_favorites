@@ -198,7 +198,7 @@ case $currentPackageManager in
         yay --needed --noconfirm -S rate-arch-mirrors || (echo "Rate arch mirrors cannot be installed, aborting" && exit);
         ua-drop-caches
         ua-update-all
-        currentPMSyntax="pacman --needed --noconfirm -S "
+        currentPMSyntax="yay --needed --noconfirm -S "
         installYayPackages
     ;;
     
