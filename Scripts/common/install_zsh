@@ -5,19 +5,12 @@ tput setaf 3;echo "-------------------------------------------------------------
 tput setaf 2;echo "....................  Installing ZSH  .........................";tput sgr0;
 tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
 
-
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-
-
 cd ../../ZSH/ || exit
-
-## Uncomment to install bash
-# shopt -s dotglob nullglob
-# cp -rv bash* ~/
-
-# Install ZSH by default
-cp -bl .zshrc ~/ || exit
 cp -bl .aliases ~/ || exit
+
+cd ~/Downloads
+git clone https://github.com/sidmoreoss/quickz-sh
+cd quickz-sh
+./quickz.sh -c        # only run with '-c' the first time, running multiple times will duplicate history entries
+
+
