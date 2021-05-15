@@ -12,7 +12,7 @@ chmod +x make_executables
 ./make_executables || exit;
 ./install_binaries || exit;
 ./install_favorites "$1" kde|| exit;
-
+./install_zsh || exit;
 # breaking so not recommended (Do it manually)
 #bash ../common/install_zsh
 
@@ -36,6 +36,4 @@ set-pywal kde -n
 #     y*) ./pywal_firefox  || exit;
 # esac
 
-
-echo "Zsh was not installed due to stability issues, please install manually"
 echo "Reboot to take effect"
