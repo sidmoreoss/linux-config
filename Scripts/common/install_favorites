@@ -93,7 +93,7 @@ packageListkde=(
     wget
     curl
     sddm
-    brave
+    brave-bin
     firefox
     qbittorrent
     
