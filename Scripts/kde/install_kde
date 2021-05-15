@@ -36,6 +36,4 @@ set-pywal kde -n
 #     y*) ./pywal_firefox  || exit;
 # esac
 
-
-echo "Zsh was not installed due to stability issues, please install manually"
 echo "Reboot to take effect"
