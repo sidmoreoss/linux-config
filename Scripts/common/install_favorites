@@ -93,8 +93,6 @@ packageListkde=(
     wget
     curl
     sddm
-    brave-bin
-    firefox
     qbittorrent
     
     audacious
