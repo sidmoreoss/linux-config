@@ -8,7 +8,7 @@ tput setaf 3;echo "-------------------------------------------------------------
 cd ../../ZSH/ || exit
 cp -bl .aliases ~/ || exit
 
-cd ~/Downloads
+cd ~/.cache
 git clone https://github.com/sidmoreoss/quickz-sh
 cd quickz-sh
 ./quickz.sh -c        # only run with '-c' the first time, running multiple times will duplicate history entries

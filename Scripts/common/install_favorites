@@ -122,10 +122,6 @@ packageListkde=(
     kvantum-qt5
 )
 
-yay_install() {
-    yay -S --noconfirm --needed $1
-}
-
 install_package() {
     sudo $currentPMSyntax $1
 }
@@ -148,7 +144,7 @@ installYayPackages(){
     for name in "${!req_list}" ; do
         count=$[count+1]
         tput setaf 3;echo "Installing package #.  "$count " " $name;tput sgr0;
-        yay_install $name
+        yay -S --noconfirm --needed $name
     done
 }
 
@@ -156,7 +152,7 @@ install_yay(){
     if ! type "yay" >> /dev/null 2>&1; then
         echo "Installing Yay"
         sudo pacman -Syyu --noconfirm
-        sudo pacman -S git --noconfirm
+        sudo pacman -S git --noconfirm --needed
         mkdir -p ~/Downloads
         cd ~/Downloads || exit
         git clone https://aur.archlinux.org/yay.git
