@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "#!/bin/bash
+echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor" | sudo tee /usr/local/bin/runOnStartup.sh
+
+sudo chmod u+x /usr/local/bin/runOnStartup.sh
+
+echo "[Unit]
+Description=Enable High Performance in Linux generic kernel
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/runOnStartup.sh
+
+[Install]
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/runOnStartup.service
+
+sudo systemctl enable runOnStartup.service
+
+./disable_audio_powersave || exit
