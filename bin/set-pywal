@@ -20,9 +20,6 @@ if ! type "wal" >> /dev/null 2>&1 || ! type "variety" >> /dev/null 2>&1  ; then
     exit
 fi
 
-# Install Pywal (Wallpaper accent colors chooser) if not already installed
-sudo pip3 install pywal
-
 find-wallpaper(){
     current_wallpaper="$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)"
 }
