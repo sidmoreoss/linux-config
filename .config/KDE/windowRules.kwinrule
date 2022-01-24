@@ -1,0 +1,124 @@
+[Application settings for alacritty]
+Description=Application settings for alacritty
+desktopsrule=2
+noborder=true
+noborderrule=2
+wmclass=alacritty
+wmclassmatch=1
+
+[Application settings for audacious]
+Description=Application settings for audacious
+desktopsrule=3
+wmclass=audacious
+wmclassmatch=1
+
+[Application settings for brave-browser]
+Description=Application settings for brave-browser
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=3
+wmclass=brave-browser
+wmclassmatch=1
+
+[Application settings for cantata]
+Description=Application settings for cantata
+desktopsrule=3
+wmclass=cantata
+wmclassmatch=1
+
+[Application settings for code-oss]
+Description=Application settings for code-oss
+desktops=d0d8753f-b953-4617-bdd4-bbaa61f37910
+desktopsrule=3
+wmclass=code-oss
+wmclassmatch=1
+
+[Application settings for dolphin]
+Description=Application settings for dolphin
+desktopsrule=3
+wmclass=dolphin
+wmclassmatch=1
+
+[Application settings for elisa]
+Description=Application settings for elisa
+desktopsrule=2
+wmclass=elisa
+wmclassmatch=3
+
+[Application settings for firefox]
+Description=Application settings for firefox
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=3
+wmclass=navigator firefox
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for gogglesmm]
+Description=Application settings for gogglesmm
+desktopsrule=3
+wmclass=gogglesmm
+wmclassmatch=1
+
+[Application settings for google-chrome]
+Description=Application settings for google-chrome
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=3
+wmclass=google-chrome
+wmclassmatch=1
+
+[Application settings for lollypop]
+Description=Application settings for lollypop
+desktopsrule=2
+wmclass=lollypop
+wmclassmatch=2
+
+[Application settings for plasma-systemmonitor]
+Description=Application settings for plasma-systemmonitor
+desktopsrule=2
+wmclass=plasma-systemmonitor
+wmclasscomplete=true
+wmclassmatch=3
+
+[Application settings for quodlibet]
+Description=Application settings for quodlibet
+desktopsrule=3
+wmclass=io.github.quodlibet.quodlibet quodlibet
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for smplayer]
+Description=Application settings for smplayer
+desktopsrule=3
+wmclass=smplayer
+wmclassmatch=1
+
+[Application settings for spotify]
+Description=Application settings for spotify
+desktopsrule=2
+wmclass=spotify
+wmclassmatch=1
+
+[Application settings for systemsettings]
+Description=Application settings for systemsettings
+desktopsrule=3
+wmclass=systemsettings5 systemsettings
+wmclasscomplete=true
+wmclassmatch=1
+
+[Ksysguard]
+Description=Ksysguard
+desktopsrule=3
+wmclass=ksysguard
+wmclassmatch=1
+
+[No title bar and borders]
+Description=No title bar and borders
+noborder=true
+noborderrule=2
+types=1
+wmclass=.*
+
+[Qbittorrent]
+Description=Qbittorrent
+desktopsrule=2
+wmclass=qbittorrent
+wmclassmatch=1

@@ -120,6 +120,7 @@ packageListkde=(
     plasma5-applets-window-appmenu-git
     plasma5-applets-window-buttons-git
     kvantum-qt5
+    freetype2
 )
 
 install_package() {

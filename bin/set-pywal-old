@@ -123,7 +123,7 @@ walColorsForDunst(){
     fi
     
     echo "\nApplying Dunst configuration\n"
-    cp -u ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
+    cp -ul ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
     
     # Symlink dunst config
     ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
@@ -166,25 +166,14 @@ set-wal(){
     restart-wm "$1"
 }
 set-variety(){
-    find-wallpaper
-    previous_wallpaper="$current_wallpaper"
     variety "$1" &
-    while [ "$previous_wallpaper" = "$current_wallpaper" ]
-    do
-        find-wallpaper
-        sleep 1
-    done
-
-    echo previous_wallpaper="$previous_wallpaper" 
-    echo current_wallpaper="$current_wallpaper"
-
-    set-wal "$2"
+    sleep 5
 }
 setwal() {
     case "$2" in
-        -f) set-variety -f "$1" && exit;;
-        -p) set-variety -p "$1" && exit;;
-        -n) set-variety -n "$1" && exit;;
+        -f) set-variety -f && set-wal "$1" && exit;;
+        -p) set-variety -p && set-wal "$1" && exit;;
+        -n) set-variety -n && set-wal "$1" && exit;;
         -u) set-wal "$1" && exit;;
     esac
 }
