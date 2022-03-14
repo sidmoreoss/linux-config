@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sudo cp -l alsactl.conf /etc/alsa/
-sudo cp -l state-daemon.conf /etc/alsa/

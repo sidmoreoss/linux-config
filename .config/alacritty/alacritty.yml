@@ -77,6 +77,7 @@ window:
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
+  opacity: 0.7
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -117,7 +118,8 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: JetBrains Mono
+    #family: JetBrains Mono
+    family: RobotoMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -323,7 +325,7 @@ draw_bold_text_with_bright_colors: true
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 # background_opacity: 1.0
-background_opacity: 0.70
+#background_opacity: 0.70
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -339,7 +341,8 @@ cursor:
   #
   # Values for `style`:
   #   - ▇ Block
-    # - _ Underline
+    # - _ Underlinefile:///run/media/Media/Videos/Movies/Cinderella Man (2005).mp4
+
   #   - | Beam
   style: Underline
 
@@ -585,27 +588,27 @@ key_bindings:
 # BEGIN ACE
 colors:
   primary:
-    background: '0x181912'
-    foreground: '0xaabde7'
+    background: '0x16110d'
+    foreground: '0xcad2d9'
   cursor:
-    text:       '0x181912'
-    cursor:     '0xaabde7'
+    text:       '0x16110d'
+    cursor:     '0xcad2d9'
   normal:
-    black:      '0x181912'
-    red:        '0xB9955F'
-    green:      '0x3453A6'
-    yellow:     '0x4865A5'
-    blue:       '0x4C72D4'
-    magenta:    '0x837F80'
-    cyan:       '0x7487AD'
-    white:      '0xaabde7'
+    black:      '0x16110d'
+    red:        '0xA68B69'
+    green:      '0x63788C'
+    yellow:     '0x738EA2'
+    blue:       '0x67ACCA'
+    magenta:    '0x9EA4A9'
+    cyan:       '0xC4C3BF'
+    white:      '0xcad2d9'
   bright:
-    black:      '0x7684a1'
-    red:        '0xB9955F'
-    green:      '0x3453A6'
-    yellow:     '0x4865A5'
-    blue:       '0x4C72D4'
-    magenta:    '0x837F80'
-    cyan:       '0x7487AD'
-    white:      '0xaabde7'
+    black:      '0x8d9397'
+    red:        '0xA68B69'
+    green:      '0x63788C'
+    yellow:     '0x738EA2'
+    blue:       '0x67ACCA'
+    magenta:    '0x9EA4A9'
+    cyan:       '0xC4C3BF'
+    white:      '0xcad2d9'
 # END ACE

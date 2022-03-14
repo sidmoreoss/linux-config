@@ -87,7 +87,6 @@ packageListqtile=(
 packageListkde=(
     flameshot
     fzf
-    ripgrep
     zsh
     git
     wget
@@ -95,7 +94,6 @@ packageListkde=(
     sddm
     qbittorrent
     
-    audacious
     smplayer
     playerctl
     
@@ -120,6 +118,7 @@ packageListkde=(
     plasma5-applets-window-appmenu-git
     plasma5-applets-window-buttons-git
     kvantum-qt5
+    freetype2
 )
 
 install_package() {
@@ -210,7 +209,10 @@ esac
 
 # Install pywal (wallpaper)
 sudo pip3 install pywal
-sudo systemctl enable sddm.service --force
+
+## Uncomment below if you recently installed sddm
+# sudo systemctl enable sddm.service --force
+
 echo
 tput setaf 2;echo "Installation Successfull!";tput sgr0;
 tput setaf 5;echo "Reboot now!!!";tput sgr0;

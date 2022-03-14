@@ -1,0 +1,152 @@
+[Application settings for Strawberry]
+Description=Application settings for Strawberry
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=strawberry
+wmclassmatch=1
+
+[Application settings for alacritty]
+Description=Application settings for alacritty
+desktops=59adc3fc-1b02-4573-9dbd-9bf4fdced57c
+desktopsrule=2
+noborder=true
+noborderrule=2
+wmclass=alacritty
+wmclassmatch=1
+
+[Application settings for amarok]
+Description=Application settings for amarok
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=amarok
+wmclassmatch=1
+
+[Application settings for audacious]
+Description=Application settings for audacious
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=audacious
+wmclassmatch=1
+
+[Application settings for brave-browser]
+Description=Application settings for brave-browser
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=2
+wmclass=brave-browser-beta
+wmclassmatch=1
+
+[Application settings for cantata]
+Description=Application settings for cantata
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+noborder=true
+wmclass=cantata
+wmclassmatch=1
+
+[Application settings for clementine]
+Description=Application settings for clementine
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=clementine
+wmclassmatch=1
+
+[Application settings for code-oss]
+Description=Application settings for code-oss
+desktops=d0d8753f-b953-4617-bdd4-bbaa61f37910
+desktopsrule=2
+wmclass=code-oss
+wmclassmatch=1
+
+[Application settings for color picker]
+Description=Application settings for color picker
+size=4,4
+sizerule=2
+wmclass=picker
+wmclassmatch=2
+
+[Application settings for dolphin]
+Description=Application settings for dolphin
+desktops=e6d97bf9-2734-4f02-a7d5-750ac4331753
+desktopsrule=2
+wmclass=dolphin
+wmclassmatch=1
+
+[Application settings for elisa]
+Description=Application settings for elisa
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=elisa
+wmclassmatch=3
+
+[Application settings for firefox]
+Description=Application settings for firefox
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=2
+wmclass=navigator firefox
+wmclasscomplete=true
+wmclassmatch=1
+
+[Application settings for google-chrome]
+Description=Application settings for google-chrome
+desktops=cc1256b1-702b-4607-b309-9f973aa33d52
+desktopsrule=2
+wmclass=google-chrome
+wmclassmatch=1
+
+[Application settings for lollypop]
+Description=Application settings for lollypop
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=lollypop
+wmclassmatch=2
+
+[Application settings for plasma-systemmonitor]
+Description=Application settings for plasma-systemmonitor
+desktops=3e958615-54c6-4aba-8da6-e154a543a317
+desktopsrule=2
+wmclass=plasma-systemmonitor
+wmclasscomplete=true
+wmclassmatch=3
+
+[Application settings for smplayer]
+Description=Application settings for smplayer
+desktops=be99849f-7b50-47d0-86f1-4dcca5942c2d
+desktopsrule=2
+wmclass=smplayer
+wmclassmatch=1
+
+[Application settings for spotify]
+Description=Application settings for spotify
+desktops=a5f2c312-2dc9-4cf4-a110-16b5c2109187
+desktopsrule=2
+wmclass=spotify
+wmclassmatch=1
+
+[Application settings for systemsettings]
+Description=Application settings for systemsettings
+desktops=3e958615-54c6-4aba-8da6-e154a543a317
+desktopsrule=2
+wmclass=systemsettings
+wmclasscomplete=true
+wmclassmatch=3
+
+[Ksysguard]
+Description=Ksysguard
+desktops=3e958615-54c6-4aba-8da6-e154a543a317
+desktopsrule=2
+wmclass=ksysguard
+wmclassmatch=1
+
+[No title bar and borders]
+Description=No title bar and borders
+noborder=true
+noborderrule=2
+types=1
+wmclass=.*
+
+[Qbittorrent]
+Description=Qbittorrent
+desktops=be99849f-7b50-47d0-86f1-4dcca5942c2d
+desktopsrule=2
+wmclass=qbittorrent
+wmclassmatch=1

@@ -1,5 +1,14 @@
 #!/usr/bin/bash
 shopt -s extglob
+log_file=$HOME/.cache/set-pywal/logs
+
+generate_log(){
+    # $1: message
+    echo "$1" : $(date) >> $log_file
+ 
+    # append date to log file
+    # date >> $log_file
+}
 
 # Verifies if 'python-pywal' is installed
 if ! type "wal" >> /dev/null 2>&1; then
@@ -23,7 +32,6 @@ fi
 find-wallpaper(){
     current_wallpaper="$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)"
 }
-
 walAlacrittyfunc(){
     # Alacritty Color Export
     # Version 0.1.0
@@ -123,7 +131,7 @@ walColorsForDunst(){
     fi
     
     echo "\nApplying Dunst configuration\n"
-    cp -ul ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
+    cp -u ~/.config/dunst/dunstrc.template ~/.config/wal/templates/dunstrc
     
     # Symlink dunst config
     ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
@@ -147,8 +155,9 @@ i3-restart(){
 }
 
 kscreenlockwal(){
-    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$current_wallpaper"
-    echo "kde lock screen wallpaper changed"
+    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$current_wallpaper" &
+    wait
+    generate_log "kde lock screen wallpaper changed"
 }
 
 restart-wm(){
@@ -164,16 +173,18 @@ set-wal(){
     wal -i "$current_wallpaper"
     otherApps
     restart-wm "$1"
+    generate_log "$(date)"
 }
 set-variety(){
     variety "$1" &
-    sleep 5
+    wait
+    set-wal "$2"
 }
 setwal() {
     case "$2" in
-        -f) set-variety -f && set-wal "$1" && exit;;
-        -p) set-variety -p && set-wal "$1" && exit;;
-        -n) set-variety -n && set-wal "$1" && exit;;
+        -f) set-variety -f "$1" && exit;;
+        -p) set-variety -p "$1" && exit;;
+        -n) set-variety -n "$1" && exit;;
         -u) set-wal "$1" && exit;;
     esac
 }
