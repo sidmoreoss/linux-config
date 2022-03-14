@@ -1,5 +1,14 @@
 #!/usr/bin/bash
 shopt -s extglob
+log_file=$HOME/.cache/set-pywal/logs
+
+generate_log(){
+    # $1: message
+    echo "$1" : $(date) >> $log_file
+ 
+    # append date to log file
+    # date >> $log_file
+}
 
 # Verifies if 'python-pywal' is installed
 if ! type "wal" >> /dev/null 2>&1; then
@@ -23,7 +32,6 @@ fi
 find-wallpaper(){
     current_wallpaper="$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)"
 }
-
 walAlacrittyfunc(){
     # Alacritty Color Export
     # Version 0.1.0
@@ -147,8 +155,9 @@ i3-restart(){
 }
 
 kscreenlockwal(){
-    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$current_wallpaper"
-    echo "kde lock screen wallpaper changed"
+    kwriteconfig5 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$current_wallpaper" &
+    wait
+    generate_log "kde lock screen wallpaper changed"
 }
 
 restart-wm(){
@@ -164,20 +173,11 @@ set-wal(){
     wal -i "$current_wallpaper"
     otherApps
     restart-wm "$1"
+    generate_log "$(date)"
 }
 set-variety(){
-    find-wallpaper
-    previous_wallpaper="$current_wallpaper"
     variety "$1" &
-    while [ "$previous_wallpaper" = "$current_wallpaper" ]
-    do
-        find-wallpaper
-        sleep 1
-    done
-
-    echo previous_wallpaper="$previous_wallpaper" 
-    echo current_wallpaper="$current_wallpaper"
-
+    wait
     set-wal "$2"
 }
 setwal() {
