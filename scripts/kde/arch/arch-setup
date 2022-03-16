@@ -2,6 +2,4 @@
 
 sudo true;
 
-../setAvatar || exit;
-
 ../install_kde pacman || exit;
