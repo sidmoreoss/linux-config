@@ -1,0 +1,20 @@
+
+ua-drop-caches(){
+     sudo paccache -rk3;
+     yay -Sc --aur --noconfirm
+}
+ua-update-all(){
+     export TMPFILE="$(mktemp)";
+     sudo true;
+     rate-arch-mirrors --max-delay=21600 | tee -a $TMPFILE || exit \
+     && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+     && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+     && ua-drop-caches \
+     && yay -Syyu --noconfirm
+}
+
+
+
+yay --needed --noconfirm -S rate-arch-mirrors || (echo "Rate arch mirrors cannot be installed, aborting" && exit);
+ua-drop-caches
+ua-update-all
