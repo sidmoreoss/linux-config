@@ -1,9 +1,27 @@
 #!/bin/bash
 
+#########################################################################################
+
+echo
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+tput setaf 2;echo "..................  Setting your avatar .......................";tput sgr0;
+tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
+# Create avatar png files and required symlink
+cp ../.face.png ~/ -v
+ln -s ~/.face.png ~/.face.icon
+
+# Set permissions for sddm
+setfacl -m u:sddm:x ~/
+setfacl -m u:sddm:r ~/.face.icon
+
+#########################################################################################
+
 echo
 tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
 tput setaf 2;echo "..................  Installing KDE Desktop  ...................";tput sgr0;
 tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
+
 
 cd ../../common || exit;
 
@@ -13,16 +31,11 @@ chmod +x make_executables
 ./install_binaries || exit;
 ./install_favorites "$1" kde || exit;
 ./install_zsh || exit;
-# breaking so not recommended (Do it manually)
-#bash ../common/install_zsh
-
 
 ## Install configuration
 cd ../../.config/ || exit;
 echo "Moving configurations"
-cp -rv variety ~/.config/  || exit;
 cp -rv alacritty ~/.config/  || exit;
-cp -rv nvim ~/.config/  || exit;
 
 # Install Pywal (Wallpaper accent colors chooser)
 # TODO: Verify that set-pywal is correctly installed
@@ -33,5 +46,7 @@ set-pywal kde -n
 # case $input in
 #     y*) ./pywal_firefox  || exit;
 # esac
+
+#########################################################################################
 
 echo "Reboot to take effect"

@@ -1,9 +1,0 @@
-<!DOCTYPE JuffEd_Session>
-<Session>
- <file path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/common/install_zsh" panel="left" cursorPos="13;26" scrollPos="0"/>
- <file path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/common/install_fonts_from_github.sh" panel="left" cursorPos="26;14" scrollPos="0"/>
- <file path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/common/AndroidMTPErrorFedora" panel="left" cursorPos="0;0" scrollPos="0"/>
- <file path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/common/get_distro" panel="left" cursorPos="33;0" scrollPos="0"/>
- <file path="/run/media/sid/Media/Documents/linux_config/linux-config/Scripts/common/get_desktop_env" panel="left" cursorPos="3;0" scrollPos="0"/>
- <view rightCurIndex="-1" leftCurIndex="4"/>
-</Session>

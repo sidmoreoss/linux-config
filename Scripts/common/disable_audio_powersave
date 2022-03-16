@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sudo cp -l ../../etc/audio_disable_powersave.conf /etc/modprobe.d/
