@@ -39,7 +39,7 @@ cp -rv alacritty ~/.config/  || exit;
 
 # Install Pywal (Wallpaper accent colors chooser)
 # TODO: Verify that set-pywal is correctly installed
-set-pywal kde -n
+# set-pywal kde -n
 
 # tput setaf 5;echo "Do you want to install pywal (wallpaper accent colors) for firefox??";tput sgr0;
 # read -r input
