@@ -6,8 +6,8 @@ tput setaf 2;echo "....................  Installing ZSH  .......................
 tput setaf 3;echo "---------------------------------------------------------------";tput sgr0;
 
 cd ~/.cache
-git clone https://github.com/sidmoreoss/quickz-sh
-cd quickz-sh
-./quickz.sh -c        # only run with '-c' the first time, running multiple times will duplicate history entries
+git clone https://github.com/sidmoreoss/ezsh.git
+cd ezsh
+./install.sh -c        # only run with '-c' the first time, running multiple times will duplicate history entries
 
 
