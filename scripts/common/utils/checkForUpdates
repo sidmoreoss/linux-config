@@ -1,0 +1,32 @@
+#! /bin/bash
+
+updates=`checkupdates | awk '{print $1}'`
+
+function exists_in_list() {
+    LIST=$1
+    DELIMITER=$2
+    VALUE=$3
+    echo $LIST | tr "$DELIMITER" '\n' | grep -F -q "$VALUE"
+}
+
+MUST_HAVE_PACKAGES=(
+    plasma
+)
+
+if [ -z "$updates" ]; then
+    notify-send -u normal -t 5000 -a "Pacman" "System is up to date" --icon=archlinux
+    exit 0
+fi
+
+
+req_list=MUST_HAVE_PACKAGES[@]
+
+for name in "${!req_list}" ; do
+    if exists_in_list "$updates" " " $name; then
+        notify-send -u normal -t 5000 -a "Pacman" "Updates available" "You should apply new updates" --icon=archlinux
+        exit 0
+    else
+        notify-send -u normal -t 5000 -a "Pacman" "Updates available" "You can skip new updates" --icon=archlinux
+        exit 0
+    fi
+done
