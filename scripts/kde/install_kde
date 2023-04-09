@@ -1,5 +1,8 @@
 #!/bin/bash
 
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd "$parent_path" || exit 1
+
 #########################################################################################
 
 echo
@@ -36,6 +39,8 @@ chmod +x make_executables
 cd ../../.config/ || exit;
 echo "Moving configurations"
 cp -rv alacritty ~/.config/  || exit;
+cp -rv pipewire ~/.config/  || exit;
+cp -rv variety ~/.config/  || exit;
 
 # Install Pywal (Wallpaper accent colors chooser)
 # TODO: Verify that set-pywal is correctly installed

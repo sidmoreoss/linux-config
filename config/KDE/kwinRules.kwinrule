@@ -1,0 +1,50 @@
+[Virtual desktop for browsers]
+Description=Virtual desktop for browsers
+desktops=add02bb5-859f-4864-a9a6-a18d444f48b6
+desktopsrule=2
+wmclass=((^|, )(.*firefox.*|.*brave.*|.*chrom.*))+$
+wmclasscomplete=true
+wmclassmatch=3
+
+[Virtual desktop for files]
+Description=Virtual desktop for files
+desktops=6b56ae37-dbb3-4ab6-b3b7-b8361c8a4e27
+desktopsrule=2
+wmclass=((^|, )(.*dolphin.*|.*okular.*|.*gwenview.*))+$
+wmclassmatch=3
+
+[Virtual desktop for music players]
+Description=Virtual desktop for music players
+desktops=2c1bb567-b815-46bc-8c9a-b488396b73ee
+desktopsrule=2
+wmclass=((^|, )(.*lollypop.*|.*audacious.*|.*strawberry.*|.*spotify.*|.*elisa.*|.*audiotube.*|.*easyeffects.*|.*clementine.*))+$
+wmclassmatch=3
+
+[Virtual desktop for settings]
+Description=Virtual desktop for settings
+desktops=b03baa48-a9e8-40f4-9d03-5b3ad0837695
+desktopsrule=2
+wmclass=((^|, )(.*systemsettings.*|.*systemmonitor.*))+$
+wmclasscomplete=true
+wmclassmatch=3
+
+[Virtual desktop for terminals]
+Description=Virtual desktop for terminals
+desktops=15eca169-245f-47c8-b1ff-c38b90793b78
+desktopsrule=2
+wmclass=((^|, )(.*alacritty.*|.*konsole.*|.*xterm.*|.*terminator.*))+$
+wmclassmatch=3
+
+[Virtual desktop for text editors]
+Description=Virtual desktop for text editors
+desktops=650219b3-a351-4427-a4b8-198d11c60216
+desktopsrule=2
+wmclass=((^|, )(.*code.*|.*kate.*|.*jetbrains.*))+$
+wmclassmatch=3
+
+[Virtual desktop for video players]
+Description=Virtual desktop for video players
+desktops=e7c1884c-ed48-42ae-9198-6e89e8b21eb2
+desktopsrule=2
+wmclass=((^|, )(.*smplayer.*|.*vlc.*|.*torrent.*))+$
+wmclassmatch=3

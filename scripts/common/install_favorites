@@ -117,15 +117,18 @@ packageListkde=(
     freetype2
     ttf-mononoki-git
     ttf-windows
+    ttf-merriweather-sans
 
     # extensions
-    plasma5-applets-virtual-desktop-bar-git
-    plasma5-applets-window-title
-    plasma5-applets-window-appmenu-git
-    plasma5-applets-window-buttons-git
-    plasma5-applets-eventcalendar
-    plasma5-wallpapers-dynamic
-    kwin-bismuth
+#     plasma5-applets-virtual-desktop-bar-git
+#     plasma5-applets-window-title
+#     plasma5-applets-window-appmenu-git
+#     plasma5-applets-window-buttons-git
+#     plasma5-applets-eventcalendar
+#     plasma5-wallpapers-dynamic
+#     kwin-bismuth
+    packagekit-qt5
+    kcharselect
 )
 
 install_package() {

@@ -15,5 +15,3 @@ mkdir -vp ~/.local/bin/
 mkdir -vp ~/.config/
 
 mkdir -vp ~/.cache/
-
-# Tested works fine
