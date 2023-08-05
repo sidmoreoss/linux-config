@@ -1,0 +1,125 @@
+#!/bin/bash
+#
+# ===================================================
+# Change background for sddm (login) screen.
+#
+# 1.0.0
+# Siddharth More
+#
+# args
+# $1 : path to new wallpaper
+#
+# usage:
+# $ set-sddm-wallpaper <path/to/new/wallaper>
+# ===================================================
+
+# =====================
+# theme directories [tested]
+# =====================
+CURRENT_SDDM_THEME="$(grep 'Current=' /etc/sddm.conf.d/kde_settings.conf | sed -e 's/Current=//g')"
+imagePath="$1"
+
+# login background
+sddmDir="/usr/share/sddm/themes/$CURRENT_SDDM_THEME/"
+sddmBgPath="$sddmDir""Backgrounds/"
+sddmConfFile="$sddmDir""theme.conf.user"
+
+
+errorNotification(){
+    echo "$1" > /home/siddharth/.cache/set-sddm-wallpaper-logs
+#     /usr/bin/notify-send -u critical -t 3000 -a "Set SDDM wallpaper" "New wallpaper cannot be applied." "$1" >> /dev/null
+}
+
+# =====================
+# initial checks [tested]
+# =====================
+# check root
+if [ "$(id -u)" != "0" ]; then
+    errorNotification "You cannot perform this operation unless you are root."
+    exit 1
+fi
+
+
+# =====================
+# script
+# =====================
+# script start
+echo "Setting new SDDM wallpaper..."
+
+
+# =====================
+# var checks
+# =====================
+# check if sddm theme dir exists [tested]
+if [ ! -d "$sddmDir" ]; then
+    errorNotification "Cannot find the sddm theme, please check if it is installed. Theme name: $CURRENT_SDDM_THEME, $sddmDir"
+    exit 1
+fi
+
+# check if sddm theme background dir exists [tested]
+if [ ! -d "$sddmBgPath" ]; then
+    mkdir -vp "$sddmBgPath"
+fi
+
+# check if sddm theme user conf file exists [tested]
+if [ ! -e "$sddmConfFile" ]; then
+    touch "$sddmConfFile"
+    echo "[General]" >> "$sddmConfFile"
+fi
+
+# check if wallpaper path exists [tested]
+if [ -z "$imagePath" ]
+then
+    errorNotification "Please provide new wallpaper path."
+    exit 1
+fi
+
+# =====================
+# print user args
+# =====================
+echo ""
+echo "[theme name]"
+echo "    $CURRENT_SDDM_THEME"
+echo ""
+echo "[new wallpaper]"
+echo "    $imagePath"
+echo ""
+echo "[sddm theme dir (login)]"
+echo "    $sddmDir"
+echo ""
+echo "[sddm theme conf dir (login)]"
+echo "    $sddmConfFile"
+echo ""
+
+
+# ==========================================
+# copy new wallpaper to sddm background path
+# ==========================================
+cp -v "$imagePath" "$sddmBgPath"
+
+
+# =====================
+# set background
+# =====================
+imageName="$(basename -- "$imagePath")"
+backgroundPath="$sddmBgPath""$imageName"
+
+case `grep -F "background=" "$sddmConfFile" >/dev/null; echo $?` in
+  0)
+    # if background is found in the file, replace it with current background path
+    errorNotification "Applying wallpaper path"
+    sed -i "/background=/s|=.*|=$backgroundPath|g" $sddmConfFile
+    ;;
+  1)
+    # if background is not found in the file, append it to the file with current background path
+    errorNotification "Applying wallpaper path"
+    echo "background=$backgroundPath" >> $sddmConfFile
+    ;;
+  *)
+    # code if an error occurred
+    errorNotification "Cannot set sddm background. Please check $sddmConfFile"
+    exit 1
+    ;;
+esac
+
+exit 0
